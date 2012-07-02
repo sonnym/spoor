@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stories type="array" count="3" total="3" filter="current_state:delivered">
+  <story>
+    <id type="integer">30251845</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251845</url>
+    <estimate type="integer">1</estimate>
+    <current_state>delivered</current_state>
+    <description></description>
+    <name>If system fails to authorize payment amount, display error message to shopper</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <owned_by>Sonny Michaud</owned_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/07/06 20:27:24 UTC</updated_at>
+    <labels>checkout,shopping</labels>
+  </story>
+  <story>
+    <id type="integer">30251839</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251839</url>
+    <estimate type="integer">1</estimate>
+    <current_state>delivered</current_state>
+    <description></description>
+    <name>Shopper should be able to enter credit card information and shipping address</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <owned_by>Sonny Michaud</owned_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/06/22 00:02:45 UTC</updated_at>
+    <labels>checkout,shopping</labels>
+  </story>
+  <story>
+    <id type="integer">30251835</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251835</url>
+    <estimate type="integer">3</estimate>
+    <current_state>delivered</current_state>
+    <description>One search field, search should look through product name, description, and SKU
+
+It should work really well.</description>
+    <name>Shopper should be able to search for product</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <owned_by>Sonny Michaud</owned_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/07/12 03:09:49 UTC</updated_at>
+    <labels>search,shopping</labels>
+    <notes type="array">
+      <note>
+        <id type="integer">25304041</id>
+        <text>test</text>
+        <author>Sonny Michaud</author>
+        <noted_at type="datetime">2012/07/09 04:49:51 UTC</noted_at>
+      </note>
+      <note>
+        <id type="integer">25304043</id>
+        <text>test</text>
+        <author>Sonny Michaud</author>
+        <noted_at type="datetime">2012/07/09 04:49:54 UTC</noted_at>
+      </note>
+    </notes>
+    <attachments type="array">
+      <attachment>
+        <id type="integer">9874835</id>
+        <filename>books.txt</filename>
+        <description></description>
+        <uploaded_by>Sonny Michaud</uploaded_by>
+        <uploaded_at type="datetime">2012/07/09 04:47:35 UTC</uploaded_at>
+        <url>https://www.pivotaltracker.com/resource/download/9874835</url>
+      </attachment>
+    </attachments>
+    <tasks type="array">
+      <task>
+        <id type="integer">8285365</id>
+        <description>Do something</description>
+        <position type="integer">1</position>
+        <complete type="boolean">true</complete>
+        <created_at type="datetime">2012/07/09 04:36:24 UTC</created_at>
+      </task>
+      <task>
+        <id type="integer">8285367</id>
+        <description>Do something else</description>
+        <position type="integer">2</position>
+        <complete type="boolean">false</complete>
+        <created_at type="datetime">2012/07/09 04:36:26 UTC</created_at>
+      </task>
+    </tasks>
+  </story>
+</stories>

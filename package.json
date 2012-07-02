@@ -1,0 +1,37 @@
+{
+  "author": "Sonny Michaud <michaud.sonny@gmail.com>",
+  "name": "spoor",
+
+  "bin" : { "spoor": "./bin/spoor.js" },
+  "scripts": {
+    "test": "make test"
+  },
+
+  "description": "A CLI issue tracker abstraction.",
+  "version": "0.0.1",
+
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sonnym/spoor.git"
+  },
+
+  "dependencies": {
+    "cli-table": "git://github.com/LearnBoost/cli-table.git"
+  , "commander": "git://github.com/visionmedia/commander.js.git"
+  , "github": "git://github.com/sonnym/node-github.git"
+  , "keypress": "~0.0.2"
+  , "pivotal": "git://github.com/Wizcorp/node-pivotal"
+  , "underscore": "~1.3"
+  },
+
+  "devDependencies": {
+    "groc": "~0.2.15"
+  , "nock": "git://github.com/flatiron/nock.git"
+  , "sinon": "~1.3"
+  , "nodeunit": "~0.7"
+  },
+
+  "engines": {
+    "node": ">=0.6"
+  }
+}

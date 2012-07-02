@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<story>
+  <id type="integer">30251869</id>
+  <project_id type="integer">560879</project_id>
+  <story_type>feature</story_type>
+  <url>http://www.pivotaltracker.com/story/show/30251869</url>
+  <estimate type="integer">1</estimate>
+  <current_state>finished</current_state>
+  <description>Show orders in last 60 days, with link to show older orders</description>
+  <name>Signed in shopper should be able to review order history</name>
+  <requested_by>Sonny Michaud</requested_by>
+  <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+  <updated_at type="datetime">2012/07/12 22:54:02 UTC</updated_at>
+  <labels>shopper accounts</labels>
+</story>
