@@ -1,0 +1,108 @@
+<!DOCTYPE html><html lang="en"><head><title>integrations/github</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="integrations/github"><meta name="groc-project-path" content="lib/integrations/github.js"><meta name="groc-github-url" content="https://github.com/sonnym/sonnym"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/sonnym/sonnym/blob/master/lib/integrations/github.js">lib/integrations/github.js</a></div></div><div id="document"><div class="segment"><div class="comments"><div class="wrapper"><h1 id="github-integration">Github Integration</h1></div></div></div><div class="segment"><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">_</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;underscore&quot;</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">utilities</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./../utilities&quot;</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">GitHubApi</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;github&quot;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">Table</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;cli-table&quot;</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">commander</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;commander&quot;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">github</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GitHubApi</span><span class="p">({</span> <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="s2">&quot;3.0.0&quot;</span><span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">authenticated</span><span class="p">,</span> <span class="nx">user</span><span class="p">,</span> <span class="nx">repo</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">public_methods</span> <span class="o">=</span> <span class="p">{</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="setup-function">setup function</h3>
+
+<p>creates an authentication token for the user so they do not have to input
+their credentials repeatedly</p></div></div><div class="code"><div class="wrapper">  <span class="s2">&quot;setup&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">authenticated</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Authorization token already exists.&quot;</span><span class="p">);</span>
+      <span class="nx">commander</span><span class="p">.</span><span class="nx">confirm</span><span class="p">(</span><span class="s2">&quot;Are you sure you want to continue? &quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">yes</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">yes</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">create_authorization</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="nx">process</span><span class="p">.</span><span class="nx">stdin</span><span class="p">.</span><span class="nx">destroy</span><span class="p">();</span>
+      <span class="p">});</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">create_authorization</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+
+  <span class="s2">&quot;open_issues&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">github</span><span class="p">.</span><span class="nx">issues</span><span class="p">.</span><span class="nx">repoIssues</span><span class="p">({</span> <span class="s2">&quot;user&quot;</span><span class="o">:</span> <span class="nx">user</span><span class="p">,</span> <span class="s2">&quot;repo&quot;</span><span class="o">:</span> <span class="nx">repo</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;open&quot;</span> <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">issues</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">};</span>
+      <span class="nx">print_issues</span><span class="p">(</span><span class="nx">issues</span><span class="p">,</span> <span class="s2">&quot;No open issues&quot;</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="constructor">@constructor</h3>
+
+<p>The constructor for this module takes a hash of settings values, and prepares
+the instantiated module for communicating with github.  The token can be
+generated and stored by the setup method.</p>
+
+<ul>
+<li>settings: Object
+<ul><li>token: String a Github oauth authentication token</li>
+<li>user: String the Github user which holds the repository for this project</li>
+<li>repo: String the name of the repository for this project</li></ul></li>
+</ul></div></div><div class="code"><div class="wrapper"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">settings</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">settings</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">settings</span><span class="p">.</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">github</span><span class="p">.</span><span class="nx">authenticate</span><span class="p">({</span> <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;oauth&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="o">:</span> <span class="nx">settings</span><span class="p">.</span><span class="nx">token</span> <span class="p">});</span>
+      <span class="nx">authenticated</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">user</span> <span class="o">=</span> <span class="nx">settings</span><span class="p">.</span><span class="nx">user</span><span class="p">;</span>
+    <span class="nx">repo</span> <span class="o">=</span> <span class="nx">settings</span><span class="p">.</span><span class="nx">repo</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">public_methods</span><span class="p">;</span>
+<span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>This function perfoms all the legwork for setting up github integration for this user
+It asks for cerdentials in order to use Basic Authentication to register a new token
+with github.</p></div></div><div class="code"><div class="wrapper"><span class="kd">function</span> <span class="nx">create_authorization</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">([</span> <span class="s2">&quot;We need your username and password in order to generate an OAuth token.&quot;</span>
+              <span class="p">,</span> <span class="s2">&quot;We will save this token in your home directory so you will not need to enter credentials again.&quot;</span>
+              <span class="p">].</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;\n&quot;</span><span class="p">));</span>
+
+  <span class="nx">commander</span><span class="p">.</span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;Username: &quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">username</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">commander</span><span class="p">.</span><span class="nx">password</span><span class="p">(</span><span class="s2">&quot;Password: &quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">password</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;scopes&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;repo&quot;</span><span class="p">]</span> <span class="p">,</span> <span class="s2">&quot;note&quot;</span><span class="o">:</span> <span class="s2">&quot;spoor&quot;</span> <span class="p">,</span> <span class="s2">&quot;note_url&quot;</span><span class="o">:</span> <span class="s2">&quot;https://github.com/sonnym/spoor&quot;</span> <span class="p">};</span>
+
+      <span class="nx">github</span><span class="p">.</span><span class="nx">authenticate</span><span class="p">({</span> <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;basic&quot;</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="o">:</span> <span class="nx">username</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="o">:</span> <span class="nx">password</span> <span class="p">});</span>
+      <span class="nx">github</span><span class="p">.</span><span class="nx">oauth</span><span class="p">.</span><span class="nx">createAuthorization</span><span class="p">(</span><span class="nx">params</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">utilities</span><span class="p">.</span><span class="nx">read_user_data</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">user_data_raw</span><span class="p">)</span> <span class="p">{</span>
+          <span class="kd">var</span> <span class="nx">user_data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">user_data_raw</span><span class="p">);</span>
+
+          <span class="k">if</span> <span class="p">(</span><span class="nx">user_data</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">user_data</span><span class="p">.</span><span class="nx">github</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;token&quot;</span><span class="o">:</span> <span class="nx">res</span><span class="p">.</span><span class="nx">token</span> <span class="p">}</span>
+          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">user_data</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;github&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;token&quot;</span><span class="o">:</span> <span class="nx">res</span><span class="p">.</span><span class="nx">token</span> <span class="p">}</span> <span class="p">}</span>
+          <span class="p">}</span>
+
+          <span class="nx">utilities</span><span class="p">.</span><span class="nx">write_user_data</span><span class="p">(</span><span class="nx">user_data</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Something went wrong.&quot;</span><span class="p">);</span>
+              <span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+              <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Authorization successfully created&quot;</span><span class="p">);</span>
+            <span class="p">}</span>
+          <span class="p">});</span>
+        <span class="p">});</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">print_issues</span><span class="p">(</span><span class="nx">issues</span><span class="p">,</span> <span class="nx">no_issues_message</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">issues</span> <span class="o">||</span> <span class="nx">issues</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">no_issues_message</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">var</span> <span class="nx">table</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Table</span><span class="p">({</span> <span class="nx">head</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;Title&quot;</span><span class="p">,</span> <span class="s2">&quot;ID&quot;</span><span class="p">,</span> <span class="s2">&quot;User&quot;</span><span class="p">,</span> <span class="s2">&quot;Labels&quot;</span><span class="p">,</span> <span class="s2">&quot;Comments&quot;</span><span class="p">]</span> <span class="p">});</span>
+
+  <span class="nx">_</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">issues</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">issue</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">labels</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">issue</span><span class="p">.</span><span class="nx">labels</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">label</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">label</span><span class="p">.</span><span class="nx">name</span> <span class="p">}).</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">);</span>
+    <span class="nx">table</span><span class="p">.</span><span class="nx">push</span><span class="p">([</span> <span class="nx">issue</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span> <span class="nx">issue</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">issue</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">login</span><span class="p">,</span> <span class="nx">labels</span><span class="p">,</span> <span class="nx">issue</span><span class="p">.</span><span class="nx">comments</span> <span class="p">]);</span>
+  <span class="p">});</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">table</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+<span class="p">}</span></div></div></div></div></body></html>

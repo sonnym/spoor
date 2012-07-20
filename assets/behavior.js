@@ -83,6 +83,555 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           "depth": 2
         }
       ]
+    }, {
+      "type": "file",
+      "data": {
+        "language": {
+          "nameMatchers": [".js"],
+          "pygmentsLexer": "javascript",
+          "singleLineComment": ["//"],
+          "name": "JavaScript"
+        },
+        "sourcePath": "/home/sonny/src/spoor/lib/cli.js",
+        "projectPath": "lib/cli.js",
+        "targetPath": "cli",
+        "firstHeader": {
+          "type": "heading",
+          "data": {
+            "level": 1,
+            "title": "CLI Interface",
+            "slug": "cli-interface",
+            "isFileHeader": true
+          },
+          "depth": 1,
+          "children": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 3,
+                "title": "module.exports",
+                "slug": "moduleexports"
+              },
+              "depth": 3
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 3,
+                "title": "load_integrations",
+                "slug": "load-integrations"
+              },
+              "depth": 3
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 3,
+                "title": "run_command",
+                "slug": "run-command"
+              },
+              "depth": 3
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 3,
+                "title": "is_integration_valid",
+                "slug": "is-integration-valid"
+              },
+              "depth": 3
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 3,
+                "title": "is_command_valid",
+                "slug": "is-command-valid"
+              },
+              "depth": 3
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 3,
+                "title": "read_settings",
+                "slug": "read-settings"
+              },
+              "depth": 3
+            }
+          ]
+        },
+        "title": "CLI Interface"
+      },
+      "depth": 1,
+      "outline": [
+        {
+          "type": "heading",
+          "data": {
+            "level": 3,
+            "title": "module.exports",
+            "slug": "moduleexports"
+          },
+          "depth": 3
+        }, {
+          "type": "heading",
+          "data": {
+            "level": 3,
+            "title": "load_integrations",
+            "slug": "load-integrations"
+          },
+          "depth": 3
+        }, {
+          "type": "heading",
+          "data": {
+            "level": 3,
+            "title": "run_command",
+            "slug": "run-command"
+          },
+          "depth": 3
+        }, {
+          "type": "heading",
+          "data": {
+            "level": 3,
+            "title": "is_integration_valid",
+            "slug": "is-integration-valid"
+          },
+          "depth": 3
+        }, {
+          "type": "heading",
+          "data": {
+            "level": 3,
+            "title": "is_command_valid",
+            "slug": "is-command-valid"
+          },
+          "depth": 3
+        }, {
+          "type": "heading",
+          "data": {
+            "level": 3,
+            "title": "read_settings",
+            "slug": "read-settings"
+          },
+          "depth": 3
+        }
+      ]
+    }, {
+      "type": "folder",
+      "data": {
+        "path": "integrations",
+        "title": "integrations"
+      },
+      "depth": 1,
+      "children": [
+        {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".js"],
+              "pygmentsLexer": "javascript",
+              "singleLineComment": ["//"],
+              "name": "JavaScript"
+            },
+            "sourcePath": "/home/sonny/src/spoor/lib/integrations/github.js",
+            "projectPath": "lib/integrations/github.js",
+            "targetPath": "integrations/github",
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Github Integration",
+                "slug": "github-integration",
+                "isFileHeader": true
+              },
+              "depth": 1,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "setup function",
+                    "slug": "setup-function"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "@constructor",
+                    "slug": "constructor"
+                  },
+                  "depth": 3
+                }
+              ]
+            },
+            "title": "Github Integration"
+          },
+          "depth": 2,
+          "outline": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 3,
+                "title": "setup function",
+                "slug": "setup-function"
+              },
+              "depth": 3
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 3,
+                "title": "@constructor",
+                "slug": "constructor"
+              },
+              "depth": 3
+            }
+          ]
+        }, {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".js"],
+              "pygmentsLexer": "javascript",
+              "singleLineComment": ["//"],
+              "name": "JavaScript"
+            },
+            "sourcePath": "/home/sonny/src/spoor/lib/integrations/tracker.js",
+            "projectPath": "lib/integrations/tracker.js",
+            "targetPath": "integrations/tracker",
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Tracker Integration",
+                "slug": "tracker-integration",
+                "isFileHeader": true
+              },
+              "depth": 1,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "general listing commands",
+                    "slug": "general-listing-commands"
+                  },
+                  "depth": 2,
+                  "children": [
+                    {
+                      "type": "heading",
+                      "data": {
+                        "level": 3,
+                        "title": "todo",
+                        "slug": "todo"
+                      },
+                      "depth": 3
+                    }, {
+                      "type": "heading",
+                      "data": {
+                        "level": 3,
+                        "title": "current",
+                        "slug": "current"
+                      },
+                      "depth": 3
+                    }, {
+                      "type": "heading",
+                      "data": {
+                        "level": 3,
+                        "title": "backlog",
+                        "slug": "backlog"
+                      },
+                      "depth": 3
+                    }, {
+                      "type": "heading",
+                      "data": {
+                        "level": 3,
+                        "title": "scheduled",
+                        "slug": "scheduled"
+                      },
+                      "depth": 3
+                    }, {
+                      "type": "heading",
+                      "data": {
+                        "level": 3,
+                        "title": "icebox",
+                        "slug": "icebox"
+                      },
+                      "depth": 3
+                    }, {
+                      "type": "heading",
+                      "data": {
+                        "level": 3,
+                        "title": "show",
+                        "slug": "show"
+                      },
+                      "depth": 3
+                    }
+                  ]
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "general editing commands",
+                    "slug": "general-editing-commands"
+                  },
+                  "depth": 2,
+                  "children": [
+                    {
+                      "type": "heading",
+                      "data": {
+                        "level": 3,
+                        "title": "add",
+                        "slug": "add"
+                      },
+                      "depth": 3
+                    }, {
+                      "type": "heading",
+                      "data": {
+                        "level": 3,
+                        "title": "estimate",
+                        "slug": "estimate"
+                      },
+                      "depth": 3
+                    }, {
+                      "type": "heading",
+                      "data": {
+                        "level": 3,
+                        "title": "schedule",
+                        "slug": "schedule"
+                      },
+                      "depth": 3
+                    }, {
+                      "type": "heading",
+                      "data": {
+                        "level": 3,
+                        "title": "deliver_finished",
+                        "slug": "deliver-finished"
+                      },
+                      "depth": 3
+                    }
+                  ]
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "verbal commands",
+                    "slug": "verbal-commands"
+                  },
+                  "depth": 2,
+                  "children": [
+                    {
+                      "type": "heading",
+                      "data": {
+                        "level": 3,
+                        "title": "Updating:",
+                        "slug": "updating"
+                      },
+                      "depth": 3,
+                      "children": [
+                        {
+                          "type": "heading",
+                          "data": {
+                            "level": 6,
+                            "title": "start, finish, deliver, accept, unstart",
+                            "slug": "start-finish-deliver-accept-unstart"
+                          },
+                          "depth": 6
+                        }
+                      ]
+                    }, {
+                      "type": "heading",
+                      "data": {
+                        "level": 3,
+                        "title": "Listing:",
+                        "slug": "listing"
+                      },
+                      "depth": 3,
+                      "children": [
+                        {
+                          "type": "heading",
+                          "data": {
+                            "level": 6,
+                            "title": "started, finished, delivered, accepted, unstarted",
+                            "slug": "started-finished-delivered-accepted-unstarted"
+                          },
+                          "depth": 6
+                        }
+                      ]
+                    }, {
+                      "type": "heading",
+                      "data": {
+                        "level": 3,
+                        "title": "constructor",
+                        "slug": "constructor"
+                      },
+                      "depth": 3
+                    }
+                  ]
+                }
+              ]
+            },
+            "title": "Tracker Integration"
+          },
+          "depth": 2,
+          "outline": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "general listing commands",
+                "slug": "general-listing-commands"
+              },
+              "depth": 2,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "todo",
+                    "slug": "todo"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "current",
+                    "slug": "current"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "backlog",
+                    "slug": "backlog"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "scheduled",
+                    "slug": "scheduled"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "icebox",
+                    "slug": "icebox"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "show",
+                    "slug": "show"
+                  },
+                  "depth": 3
+                }
+              ]
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "general editing commands",
+                "slug": "general-editing-commands"
+              },
+              "depth": 2,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "add",
+                    "slug": "add"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "estimate",
+                    "slug": "estimate"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "schedule",
+                    "slug": "schedule"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "deliver_finished",
+                    "slug": "deliver-finished"
+                  },
+                  "depth": 3
+                }
+              ]
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "verbal commands",
+                "slug": "verbal-commands"
+              },
+              "depth": 2,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Updating:",
+                    "slug": "updating"
+                  },
+                  "depth": 3,
+                  "children": [
+                    {
+                      "type": "heading",
+                      "data": {
+                        "level": 6,
+                        "title": "start, finish, deliver, accept, unstart",
+                        "slug": "start-finish-deliver-accept-unstart"
+                      },
+                      "depth": 6
+                    }
+                  ]
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Listing:",
+                    "slug": "listing"
+                  },
+                  "depth": 3,
+                  "children": [
+                    {
+                      "type": "heading",
+                      "data": {
+                        "level": 6,
+                        "title": "started, finished, delivered, accepted, unstarted",
+                        "slug": "started-finished-delivered-accepted-unstarted"
+                      },
+                      "depth": 6
+                    }
+                  ]
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "constructor",
+                    "slug": "constructor"
+                  },
+                  "depth": 3
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ];
 
