@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stories type="array" count="39" total="39">
+  <story>
+    <id type="integer">32382491</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>bug</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32382491</url>
+    <current_state>accepted</current_state>
+    <name>current_iteration is incorrect when # of stories is 1</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <owned_by>Sonny Michaud</owned_by>
+    <created_at type="datetime">2012/07/06 19:26:43 UTC</created_at>
+    <updated_at type="datetime">2012/07/07 16:22:23 UTC</updated_at>
+    <accepted_at type="datetime">2012/07/06 19:46:51 UTC</accepted_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32381485</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32381485</url>
+    <estimate type="integer">1</estimate>
+    <current_state>accepted</current_state>
+    <name>User can see backlog</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <owned_by>Sonny Michaud</owned_by>
+    <created_at type="datetime">2012/07/06 19:09:59 UTC</created_at>
+    <updated_at type="datetime">2012/07/07 16:22:23 UTC</updated_at>
+    <accepted_at type="datetime">2012/07/06 19:46:52 UTC</accepted_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32381599</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32381599</url>
+    <estimate type="integer">1</estimate>
+    <current_state>accepted</current_state>
+    <name>User can schedule a story immediately following creation</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <owned_by>Sonny Michaud</owned_by>
+    <created_at type="datetime">2012/07/06 19:11:11 UTC</created_at>
+    <updated_at type="datetime">2012/07/07 16:22:23 UTC</updated_at>
+    <accepted_at type="datetime">2012/07/06 20:09:17 UTC</accepted_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32381521</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32381521</url>
+    <estimate type="integer">1</estimate>
+    <current_state>accepted</current_state>
+    <name>User can start a story</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <owned_by>Sonny Michaud</owned_by>
+    <created_at type="datetime">2012/07/06 19:10:28 UTC</created_at>
+    <updated_at type="datetime">2012/07/07 16:22:23 UTC</updated_at>
+    <accepted_at type="datetime">2012/07/06 20:26:10 UTC</accepted_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32386563</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32386563</url>
+    <estimate type="integer">1</estimate>
+    <current_state>accepted</current_state>
+    <name>User can finish a story</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/06 20:32:19 UTC</created_at>
+    <updated_at type="datetime">2012/07/07 16:22:23 UTC</updated_at>
+    <accepted_at type="datetime">2012/07/06 20:48:54 UTC</accepted_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32386635</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32386635</url>
+    <estimate type="integer">1</estimate>
+    <current_state>accepted</current_state>
+    <name>User can deliver a story</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/06 20:34:17 UTC</created_at>
+    <updated_at type="datetime">2012/07/07 16:22:23 UTC</updated_at>
+    <accepted_at type="datetime">2012/07/06 20:48:55 UTC</accepted_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32387145</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32387145</url>
+    <estimate type="integer">1</estimate>
+    <current_state>accepted</current_state>
+    <name>User can deliver all finished stories</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/06 20:44:53 UTC</created_at>
+    <updated_at type="datetime">2012/07/07 16:22:23 UTC</updated_at>
+    <accepted_at type="datetime">2012/07/06 20:48:56 UTC</accepted_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32387555</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>bug</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32387555</url>
+    <current_state>accepted</current_state>
+    <description>Should add a mechanism for handling errors with all pivotal API calls</description>
+    <name>Exception when id is mistyped while trying to start a story</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/06 20:52:13 UTC</created_at>
+    <updated_at type="datetime">2012/07/07 16:22:23 UTC</updated_at>
+    <accepted_at type="datetime">2012/07/07 15:32:40 UTC</accepted_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32406491</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32406491</url>
+    <estimate type="integer">1</estimate>
+    <current_state>accepted</current_state>
+    <name>User can view the icebox</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/07 14:15:27 UTC</created_at>
+    <updated_at type="datetime">2012/07/07 16:22:23 UTC</updated_at>
+    <accepted_at type="datetime">2012/07/07 15:32:40 UTC</accepted_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32406541</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32406541</url>
+    <estimate type="integer">1</estimate>
+    <current_state>accepted</current_state>
+    <name>User can schdule a story in the icebox</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/07 14:24:38 UTC</created_at>
+    <updated_at type="datetime">2012/07/07 16:22:23 UTC</updated_at>
+    <accepted_at type="datetime">2012/07/07 15:32:41 UTC</accepted_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32406547</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32406547</url>
+    <estimate type="integer">1</estimate>
+    <current_state>accepted</current_state>
+    <name>User can quickly estimate a story</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/07 14:25:02 UTC</created_at>
+    <updated_at type="datetime">2012/07/07 16:22:23 UTC</updated_at>
+    <accepted_at type="datetime">2012/07/07 15:32:44 UTC</accepted_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32407233</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32407233</url>
+    <estimate type="integer">2</estimate>
+    <current_state>accepted</current_state>
+    <name>Allow for integration with multiple interfaces</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <owned_by>Sonny Michaud</owned_by>
+    <created_at type="datetime">2012/07/07 15:41:41 UTC</created_at>
+    <updated_at type="datetime">2012/07/08 06:10:57 UTC</updated_at>
+    <accepted_at type="datetime">2012/07/08 05:43:18 UTC</accepted_at>
+    <labels>github,interfaces,tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32413143</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>bug</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32413143</url>
+    <current_state>accepted</current_state>
+    <name>.schedule_story leaves the event loop hanging</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/08 05:27:36 UTC</created_at>
+    <updated_at type="datetime">2012/07/08 06:10:37 UTC</updated_at>
+    <accepted_at type="datetime">2012/07/08 05:43:19 UTC</accepted_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32413227</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32413227</url>
+    <estimate type="integer">1</estimate>
+    <current_state>accepted</current_state>
+    <name>User can see work to be done</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/08 05:50:41 UTC</created_at>
+    <updated_at type="datetime">2012/07/08 06:10:08 UTC</updated_at>
+    <accepted_at type="datetime">2012/07/08 06:10:08 UTC</accepted_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32413187</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32413187</url>
+    <estimate type="integer">2</estimate>
+    <current_state>accepted</current_state>
+    <name>User can create global settings for github</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/08 05:36:17 UTC</created_at>
+    <updated_at type="datetime">2012/07/09 01:56:53 UTC</updated_at>
+    <accepted_at type="datetime">2012/07/09 01:56:53 UTC</accepted_at>
+    <labels>github</labels>
+  </story>
+  <story>
+    <id type="integer">32413139</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>bug</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32413139</url>
+    <current_state>accepted</current_state>
+    <description>make it part of a constructor for the module</description>
+    <name>Integration.setup should not be exposed as a command</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/08 05:26:31 UTC</created_at>
+    <updated_at type="datetime">2012/07/09 01:56:54 UTC</updated_at>
+    <accepted_at type="datetime">2012/07/09 01:56:54 UTC</accepted_at>
+  </story>
+  <story>
+    <id type="integer">32386551</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32386551</url>
+    <estimate type="integer">1</estimate>
+    <current_state>accepted</current_state>
+    <description>Including comments, tasks, &amp;c</description>
+    <name>User can view story details</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/06 20:31:47 UTC</created_at>
+    <updated_at type="datetime">2012/07/14 21:04:39 UTC</updated_at>
+    <accepted_at type="datetime">2012/07/14 21:04:39 UTC</accepted_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32425311</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32425311</url>
+    <estimate type="integer">1</estimate>
+    <current_state>accepted</current_state>
+    <name>User can accept a story</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/09 03:37:53 UTC</created_at>
+    <updated_at type="datetime">2012/07/14 21:08:42 UTC</updated_at>
+    <accepted_at type="datetime">2012/07/14 21:08:42 UTC</accepted_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32792647</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32792647</url>
+    <estimate type="integer">1</estimate>
+    <current_state>accepted</current_state>
+    <name>User can unstart a story</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/14 21:02:03 UTC</created_at>
+    <updated_at type="datetime">2012/07/14 21:13:41 UTC</updated_at>
+    <accepted_at type="datetime">2012/07/14 21:13:41 UTC</accepted_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32425321</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32425321</url>
+    <estimate type="integer">1</estimate>
+    <current_state>accepted</current_state>
+    <name>User can see a list of delivered stories</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/09 03:38:26 UTC</created_at>
+    <updated_at type="datetime">2012/07/15 19:21:41 UTC</updated_at>
+    <accepted_at type="datetime">2012/07/15 19:21:40 UTC</accepted_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32411745</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32411745</url>
+    <estimate type="integer">3</estimate>
+    <current_state>accepted</current_state>
+    <name>User can see github issues</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/08 00:31:17 UTC</created_at>
+    <updated_at type="datetime">2012/07/18 01:56:15 UTC</updated_at>
+    <accepted_at type="datetime">2012/07/18 01:56:15 UTC</accepted_at>
+    <labels>github</labels>
+  </story>
+  <story>
+    <id type="integer">32407197</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>chore</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32407197</url>
+    <current_state>accepted</current_state>
+    <name>Write tests</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/07 15:36:13 UTC</created_at>
+    <updated_at type="datetime">2012/07/18 04:25:18 UTC</updated_at>
+    <accepted_at type="datetime">2012/07/18 04:25:18 UTC</accepted_at>
+  </story>
+  <story>
+    <id type="integer">33095175</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>chore</story_type>
+    <url>http://www.pivotaltracker.com/story/show/33095175</url>
+    <current_state>accepted</current_state>
+    <name>Set up Travis CI</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/20 03:27:58 UTC</created_at>
+    <updated_at type="datetime">2012/07/20 03:54:27 UTC</updated_at>
+    <accepted_at type="datetime">2012/07/20 03:54:26 UTC</accepted_at>
+  </story>
+  <story>
+    <id type="integer">33096199</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>chore</story_type>
+    <url>http://www.pivotaltracker.com/story/show/33096199</url>
+    <current_state>accepted</current_state>
+    <name>Enable github pages</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/20 04:23:12 UTC</created_at>
+    <updated_at type="datetime">2012/07/20 05:05:10 UTC</updated_at>
+    <accepted_at type="datetime">2012/07/20 05:05:10 UTC</accepted_at>
+  </story>
+  <story>
+    <id type="integer">32406599</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>chore</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32406599</url>
+    <current_state>started</current_state>
+    <name>Write a README</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/07 14:32:06 UTC</created_at>
+    <updated_at type="datetime">2012/07/15 16:32:40 UTC</updated_at>
+  </story>
+  <story>
+    <id type="integer">32406605</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>chore</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32406605</url>
+    <current_state>started</current_state>
+    <name>Code cleanup and documentation</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/07 14:32:30 UTC</created_at>
+    <updated_at type="datetime">2012/07/15 16:33:03 UTC</updated_at>
+  </story>
+  <story>
+    <id type="integer">32407373</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32407373</url>
+    <estimate type="integer">2</estimate>
+    <current_state>started</current_state>
+    <name>User can view all stories</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/07 16:09:15 UTC</created_at>
+    <updated_at type="datetime">2012/07/21 17:14:36 UTC</updated_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32406489</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32406489</url>
+    <estimate type="integer">1</estimate>
+    <current_state>unstarted</current_state>
+    <name>User can edit a story</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/07 14:15:06 UTC</created_at>
+    <updated_at type="datetime">2012/07/07 16:22:23 UTC</updated_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32406557</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32406557</url>
+    <estimate type="integer">2</estimate>
+    <current_state>unstarted</current_state>
+    <name>User can view a list of unestimated stories in icebox/backlog</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/07 14:26:04 UTC</created_at>
+    <updated_at type="datetime">2012/07/07 16:22:23 UTC</updated_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32406469</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32406469</url>
+    <estimate type="integer">1</estimate>
+    <current_state>unstarted</current_state>
+    <name>User can attach a file to a story</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/07 14:11:30 UTC</created_at>
+    <updated_at type="datetime">2012/07/07 16:22:23 UTC</updated_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32407015</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32407015</url>
+    <estimate type="integer">1</estimate>
+    <current_state>unstarted</current_state>
+    <name>User can delete a story</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/07 14:56:01 UTC</created_at>
+    <updated_at type="datetime">2012/07/07 16:22:23 UTC</updated_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32416611</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32416611</url>
+    <estimate type="integer">2</estimate>
+    <current_state>unstarted</current_state>
+    <name>User can create global settings for tracker</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/08 15:03:33 UTC</created_at>
+    <updated_at type="datetime">2012/07/09 03:36:51 UTC</updated_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32425387</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32425387</url>
+    <estimate type="integer">1</estimate>
+    <current_state>unstarted</current_state>
+    <name>User can comment on a story</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/09 03:43:17 UTC</created_at>
+    <updated_at type="datetime">2012/07/09 03:46:10 UTC</updated_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32425417</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32425417</url>
+    <estimate type="integer">2</estimate>
+    <current_state>unstarted</current_state>
+    <name>System can infer github project information during setup</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/09 03:45:14 UTC</created_at>
+    <updated_at type="datetime">2012/07/09 03:45:17 UTC</updated_at>
+    <labels>github</labels>
+  </story>
+  <story>
+    <id type="integer">32425523</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32425523</url>
+    <estimate type="integer">2</estimate>
+    <current_state>unstarted</current_state>
+    <name>User can run setup for multiple integrations simultaneously</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/09 03:51:10 UTC</created_at>
+    <updated_at type="datetime">2012/07/09 03:51:14 UTC</updated_at>
+    <labels>interfaces</labels>
+  </story>
+  <story>
+    <id type="integer">32425539</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32425539</url>
+    <estimate type="integer">1</estimate>
+    <current_state>unstarted</current_state>
+    <name>User can see a list of existing labels</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/09 03:51:44 UTC</created_at>
+    <updated_at type="datetime">2012/07/09 03:51:48 UTC</updated_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">32501901</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32501901</url>
+    <estimate type="integer">1</estimate>
+    <current_state>unstarted</current_state>
+    <name>User can download an attachment</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/10 04:04:30 UTC</created_at>
+    <updated_at type="datetime">2012/07/10 04:04:36 UTC</updated_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">33157349</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/33157349</url>
+    <estimate type="integer">3</estimate>
+    <current_state>unstarted</current_state>
+    <name>User can user arbitrarily filter stories</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/21 17:35:35 UTC</created_at>
+    <updated_at type="datetime">2012/07/21 17:35:57 UTC</updated_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">33157401</id>
+    <project_id type="integer">591367</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/33157401</url>
+    <estimate type="integer">3</estimate>
+    <current_state>unscheduled</current_state>
+    <name>Tab completions</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/21 17:40:58 UTC</created_at>
+    <updated_at type="datetime">2012/07/21 17:40:58 UTC</updated_at>
+    <labels>github,tracker</labels>
+  </story>
+</stories>
