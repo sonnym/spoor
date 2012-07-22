@@ -22,7 +22,7 @@ function get_command_in_context(command, path, cb) {
     nock("https://api.github.com").get(path).reply(200, response_data);
 
     helper.load_fixture("github/" + command + ".output", function(output_data) {
-      new github({ "auth": "foo", "user": "bar", "repo": "baz" })[command]();
+      new github({ "auth": "foo", "user": "bar", "repo": "baz" }).commands[command]();
       cb(output_data);
     });
   });

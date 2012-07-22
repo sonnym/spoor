@@ -20,6 +20,7 @@
   , "commander": "git://github.com/visionmedia/commander.js.git"
   , "github": "git://github.com/sonnym/node-github.git"
   , "keypress": "~0.0.2"
+  , "nomnom": "~1.5"
   , "pivotal": "git://github.com/Wizcorp/node-pivotal"
   , "underscore": "~1.3"
   },
