@@ -120,6 +120,23 @@ exports.estimate_command = function(test) {
   });
 };
 
+exports.comment_command = function(test) {
+  helper.load_fixture("tracker/comment.response", function(response_data) {
+    nock("https://www.pivotaltracker.com")
+        .post("/services/v3/projects/1/stories/1/notes", "<note><text>It&#39;s a trap!</text></note>")
+        .reply(200, response_data);
+
+    new tracker({ "token": "n/a", "project_id": 1 }).commands.comment(1, "It's a trap!");
+
+    var mock = sinon.mock(console).expects("log").exactly(1);
+    helper.wait_for(function() { return mock.callCount === 1 }, function() {
+      console.log.restore();
+      test.equal(mock.args[0], "Comment \"It's a trap!\" noted by Ackbar at 2012/07/24 04:30:28 UTC");
+      test.done();
+    });
+  });
+};
+
 _.each(["start", "finish", "deliver", "accept", "unstart"], function(verb) {
   var participle = verb + "ed"
 

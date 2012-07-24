@@ -1,0 +1,7 @@
+<note>
+  <id type="integer">1</id>
+  <text>It's a trap!</text>
+  <author>Ackbar</author>
+  <noted_at type="datetime">2012/07/24 04:30:28 UTC</noted_at>
+</note>
+
