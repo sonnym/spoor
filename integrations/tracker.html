@@ -72,7 +72,7 @@ integrate with Tracker.</p></div></div><div class="code"><div class="wrapper"><s
 
 <p>This gives you the all the information pertinent to a story in tabular form -
 from its basic details, to tasks, comments, and attachments</p></div></div><div class="code"><div class="wrapper"><span class="nx">opts</span><span class="p">.</span><span class="nx">show</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">opts</span><span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s2">&quot;story_id&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">2</span>
+  <span class="nx">opts</span><span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s2">&quot;story_id&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">0</span>
                           <span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;ID of the Tracker story to be estimated&quot;</span>
                           <span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
                           <span class="p">});</span>
@@ -106,11 +106,11 @@ been created, you can choose to schedule it immediately</p></div></div><div clas
 </ul>
 
 <p>quickly estimate a story</p></div></div><div class="code"><div class="wrapper"><span class="nx">opts</span><span class="p">.</span><span class="nx">estimate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">opts</span><span class="p">.</span><span class="nx">options</span><span class="p">({</span> <span class="s2">&quot;story_id&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">2</span>
+  <span class="nx">opts</span><span class="p">.</span><span class="nx">options</span><span class="p">({</span> <span class="s2">&quot;story_id&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">0</span>
                              <span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;ID of the Tracker story to be estimated&quot;</span>
                              <span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
                              <span class="p">}</span>
-               <span class="p">,</span> <span class="s2">&quot;estimate&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">3</span>
+               <span class="p">,</span> <span class="s2">&quot;estimate&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">1</span>
                              <span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;# of story points&quot;</span>
                              <span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
                              <span class="p">}</span>
@@ -127,7 +127,7 @@ been created, you can choose to schedule it immediately</p></div></div><div clas
 </ul>
 
 <p>move a story to the end of the backlog (regardless of current location)</p></div></div><div class="code"><div class="wrapper"><span class="nx">opts</span><span class="p">.</span><span class="nx">schedule</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">opts</span><span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s2">&quot;story_id&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">2</span>
+  <span class="nx">opts</span><span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s2">&quot;story_id&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">0</span>
                           <span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;ID of the Tracker story to be estimated&quot;</span>
                           <span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
                           <span class="p">});</span>
@@ -165,7 +165,7 @@ functions to the commands hash.</p>
 
 <p>Display a list of stories with the specified current_state filter applied.</p></div></div><div class="code"><div class="wrapper"><span class="nx">_</span><span class="p">.</span><span class="nx">each</span><span class="p">([</span><span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;finish&quot;</span><span class="p">,</span> <span class="s2">&quot;deliver&quot;</span><span class="p">,</span> <span class="s2">&quot;accept&quot;</span><span class="p">,</span> <span class="s2">&quot;unstart&quot;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">verb</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">opts</span><span class="p">[</span><span class="nx">verb</span><span class="p">]</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">opts</span><span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s2">&quot;story_id&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">2</span>
+    <span class="nx">opts</span><span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s2">&quot;story_id&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">0</span>
                             <span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;ID of the Tracker story to be estimated&quot;</span>
                             <span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
                             <span class="p">});</span>
