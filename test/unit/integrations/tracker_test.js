@@ -137,6 +137,24 @@ exports.comment_command = function(test) {
   });
 };
 
+exports.attach_command = function(test) {
+  nock("https://www.pivotaltracker.com")
+      .filteringRequestBody(function(path) {
+        return '*';
+      })
+      .post("/services/v3/projects/1/stories/1/attachments", "*")
+      .reply(200);
+
+  new tracker({ "token": "n/a", "project_id": 1 }).commands.attach({ story_id: 1, path: "test/fixtures/tracker/attachment.png" });
+
+  var mock = sinon.mock(console).expects("log").exactly(1);
+  helper.wait_for(function() { return mock.callCount === 1 }, function() {
+    console.log.restore();
+    test.equal(mock.args[0], "Upload of attachment.png successful");
+    test.done();
+  });
+};
+
 _.each(["start", "finish", "deliver", "accept", "unstart"], function(verb) {
   var participle = verb + "ed"
 
