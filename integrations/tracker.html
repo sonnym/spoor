@@ -120,6 +120,28 @@ been created, you can choose to schedule it immediately</p></div></div><div clas
   <span class="nx">update_story</span><span class="p">(</span><span class="nx">story_id</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;estimate&quot;</span><span class="o">:</span> <span class="nx">estimate</span> <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Story has been estimated&quot;</span><span class="p">);</span>
   <span class="p">});</span>
+<span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="comment">comment</h3>
+
+<ul>
+<li>story_id: Integer</li>
+<li>comment: String</li>
+</ul>
+
+<p>comment on a story</p></div></div><div class="code"><div class="wrapper"><span class="nx">opts</span><span class="p">.</span><span class="nx">comment</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">opts</span><span class="p">.</span><span class="nx">options</span><span class="p">({</span> <span class="s2">&quot;story_id&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">0</span>
+                             <span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;ID of the Tracker story to be estimated&quot;</span>
+                             <span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+                             <span class="p">}</span>
+               <span class="p">,</span> <span class="s2">&quot;comment&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">1</span>
+                            <span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;Comment to be posted&quot;</span>
+                            <span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+                            <span class="p">}</span>
+               <span class="p">});</span>
+<span class="p">};</span>
+<span class="nx">commands</span><span class="p">.</span><span class="nx">comment</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">story_id</span><span class="p">,</span> <span class="nx">comment</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">addStoryComment</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">,</span> <span class="nx">story_id</span><span class="p">,</span> <span class="nx">comment</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Comment \&quot;&quot;</span> <span class="o">+</span> <span class="nx">res</span><span class="p">.</span><span class="nx">text</span> <span class="o">+</span> <span class="s2">&quot;\&quot; noted by &quot;</span> <span class="o">+</span> <span class="nx">res</span><span class="p">.</span><span class="nx">author</span> <span class="o">+</span> <span class="s2">&quot; at &quot;</span> <span class="o">+</span> <span class="nx">res</span><span class="p">.</span><span class="nx">noted_at</span><span class="p">);</span>
+  <span class="p">});</span>
 <span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="schedule">schedule</h3>
 
 <ul>
