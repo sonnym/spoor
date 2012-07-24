@@ -17,6 +17,13 @@ Spoor is split up into separate integrations, each corresponding to a difference
 you can interact through the CLI. You can find detailed documentation for all the integrations in the
 [annotated source code](http://sonnym.github.com/spoor/).
 
+To obtain a list of integrations, you may simply type `spoor`, which will display the general usage form
+as well as the list of available integrations; in order to see the commands within an integration, simply
+specify the integration on the command line, e.g. `spoor foo`.
+
+Many commands do not require any options, but commands that have options available can be queried by calling
+the command without any arguments, such as with `spoor foo bar`.
+
 ## Contributing
 Please send along any requests for additional integrations or feel free to write your own! If you decide
 to add any features to spoor, be sure to write some tests.  We use [groc](https://github.com/nevir/groc)
