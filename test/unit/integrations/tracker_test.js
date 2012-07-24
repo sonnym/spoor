@@ -93,7 +93,7 @@ exports.stories_command = function(test) {
 };
 
 exports.show_command = function(test) {
-  get_command_in_context("show", "/services/v3/projects/1/stories/1", [1], function(output_data) {
+  get_command_in_context("show", "/services/v3/projects/1/stories/1", { story_id: 1 }, function(output_data) {
     var mock = sinon.mock(console).expects("log").exactly(4);
     helper.wait_for(function() { return mock.callCount === 4 }, function() {
       console.log.restore();
@@ -109,7 +109,7 @@ exports.estimate_command = function(test) {
         .put("/services/v3/projects/1/stories/1", "<story><estimate>4321</estimate></story>")
         .reply(200, response_data);
 
-    new tracker({ "token": "n/a", "project_id": 1 }).commands.estimate(1, 4321);
+    new tracker({ "token": "n/a", "project_id": 1 }).commands.estimate({ story_id: 1, estimate: 4321 });
 
     var mock = sinon.mock(console).expects("log").exactly(1);
     helper.wait_for(function() { return mock.callCount === 1 }, function() {
@@ -126,7 +126,7 @@ exports.comment_command = function(test) {
         .post("/services/v3/projects/1/stories/1/notes", "<note><text>It&#39;s a trap!</text></note>")
         .reply(200, response_data);
 
-    new tracker({ "token": "n/a", "project_id": 1 }).commands.comment(1, "It's a trap!");
+    new tracker({ "token": "n/a", "project_id": 1 }).commands.comment({ story_id: 1, comment: "It's a trap!" });
 
     var mock = sinon.mock(console).expects("log").exactly(1);
     helper.wait_for(function() { return mock.callCount === 1 }, function() {
@@ -146,7 +146,7 @@ _.each(["start", "finish", "deliver", "accept", "unstart"], function(verb) {
           .put("/services/v3/projects/1/stories/1", "<story><current_state>" + verb + "ed</current_state></story>")
           .reply(200, response_data);
 
-      new tracker({ "token": "n/a", "project_id": 1 }).commands[verb](1);
+      new tracker({ "token": "n/a", "project_id": 1 }).commands[verb]({ story_id: 1 });
 
       var mock = sinon.mock(console).expects("log").once();
       helper.wait_for(function() { return mock.callCount === 1 }, function() {
@@ -181,7 +181,7 @@ function get_command_in_context(command, path, cmd_args, cb) {
     nock("https://www.pivotaltracker.com").get(path).reply(200, response_data);
 
     helper.load_fixture("tracker/" + command + ".output", function(output_data) {
-      new tracker({ "token": "n/a", "project_id": 1 }).commands[command].apply(null, cmd_args);
+      new tracker({ "token": "n/a", "project_id": 1 }).commands[command].call(null, cmd_args);
       cb(output_data);
     });
   });
