@@ -1,15 +1,19 @@
 <!DOCTYPE html><html lang="en"><head><title>cli</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content=""><meta name="groc-document-path" content="cli"><meta name="groc-project-path" content="lib/cli.js"><meta name="groc-github-url" content="https://github.com/sonnym/sonnym"><link rel="stylesheet" type="text/css" media="all" href="assets/style.css"><script type="text/javascript" src="assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/sonnym/sonnym/blob/master/lib/cli.js">lib/cli.js</a></div></div><div id="document"><div class="segment"><div class="comments"><div class="wrapper"><h1 id="cli-interface">CLI Interface</h1>
 
 <p>This file contains the initialization of spoor, as well as the
-process of calling a command to an integration</p></div></div><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;fs&quot;</span><span class="p">);</span>
+process of calling a command to an integration.  Handling of
+integration and command selection is performed manually, but
+command specific arguments are handled by
+<a href="https://github.com/harthur/nomnom">nomnom</a></p></div></div><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;fs&quot;</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;path&quot;</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">_</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;underscore&quot;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">parser</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;nomnom&quot;</span><span class="p">).</span><span class="nx">colors</span><span class="p">()</span>
+                              <span class="p">.</span><span class="nx">script</span><span class="p">(</span><span class="s2">&quot;spoor &lt;integration&gt; &lt;command&gt;&quot;</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">utilities</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s2">&quot;utilities&quot;</span><span class="p">));</span>
 
 <span class="kd">var</span> <span class="nx">commands</span> <span class="o">=</span> <span class="p">{};</span>
-<span class="kd">var</span> <span class="nx">integrations_dir</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;lib&quot;</span><span class="p">,</span> <span class="s2">&quot;integrations&quot;</span><span class="p">);</span>
 
 <span class="cm">/* workaround to fix commander */</span>
 <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;keypress&#39;</span><span class="p">)(</span><span class="nx">process</span><span class="p">.</span><span class="nx">stdin</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="moduleexports">module.exports</h3>
@@ -22,6 +26,7 @@ command after loading all available integrations</p></div></div><div class="code
 <ul>
 <li>cb Function will be called in a context with all integrations loaded</li>
 </ul></div></div><div class="code"><div class="wrapper"><span class="kd">function</span> <span class="nx">load_integrations</span><span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">integrations_dir</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;lib&quot;</span><span class="p">,</span> <span class="s2">&quot;integrations&quot;</span><span class="p">);</span>
   <span class="nx">fs</span><span class="p">.</span><span class="nx">readdir</span><span class="p">(</span><span class="nx">integrations_dir</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">files</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">_</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">files</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">if</span> <span class="p">(</span><span class="nx">file</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">===</span> <span class="s2">&quot;.js&quot;</span><span class="p">)</span> <span class="p">{</span>
@@ -31,9 +36,17 @@ command after loading all available integrations</p></div></div><div class="code
     <span class="p">});</span>
     <span class="nx">cb</span><span class="p">();</span>
   <span class="p">});</span>
-<span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="run-command">run_command</h3></div></div></div><div class="segment"><div class="code"><div class="wrapper"><span class="kd">function</span> <span class="nx">run_command</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">integration</span> <span class="o">=</span> <span class="nx">utilities</span><span class="p">.</span><span class="nx">get_next_arg</span><span class="p">();</span>
-  <span class="kd">var</span> <span class="nx">command</span> <span class="o">=</span> <span class="nx">utilities</span><span class="p">.</span><span class="nx">get_next_arg</span><span class="p">();</span>
+<span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="run-command">run_command</h3>
+
+<ol>
+<li>check integration validity</li>
+<li>load project and user settings</li>
+<li>instantiate the integration</li>
+<li>check command validity</li>
+<li>run the command</li>
+</ol></div></div><div class="code"><div class="wrapper"><span class="kd">function</span> <span class="nx">run_command</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">integration</span> <span class="o">=</span> <span class="nx">get_next_arg</span><span class="p">();</span>
+  <span class="kd">var</span> <span class="nx">command</span> <span class="o">=</span> <span class="nx">get_next_arg</span><span class="p">();</span>
 
   <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">is_integration_valid</span><span class="p">(</span><span class="nx">integration</span><span class="p">))</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Invalid integration &quot;</span> <span class="o">+</span> <span class="nx">integration</span> <span class="o">+</span> <span class="s2">&quot;\n&quot;</span><span class="p">);</span>
@@ -42,7 +55,8 @@ command after loading all available integrations</p></div></div><div class="code
   <span class="p">}</span>
 
   <span class="nx">read_settings</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">settings</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">command_runner</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">commands</span><span class="p">[</span><span class="nx">integration</span><span class="p">](</span><span class="nx">settings</span><span class="p">[</span><span class="nx">integration</span><span class="p">]);</span>
+    <span class="kd">var</span> <span class="nx">integration_instance</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">commands</span><span class="p">[</span><span class="nx">integration</span><span class="p">](</span><span class="nx">settings</span><span class="p">[</span><span class="nx">integration</span><span class="p">]);</span>
+    <span class="kd">var</span> <span class="nx">command_runner</span> <span class="o">=</span> <span class="nx">integration_instance</span><span class="p">.</span><span class="nx">commands</span><span class="p">;</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">is_command_valid</span><span class="p">(</span><span class="nx">command_runner</span><span class="p">,</span> <span class="nx">command</span><span class="p">))</span> <span class="p">{</span>
       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Invalid command &quot;</span> <span class="o">+</span> <span class="nx">command</span> <span class="o">+</span> <span class="s2">&quot;\n&quot;</span><span class="p">);</span>
@@ -50,7 +64,13 @@ command after loading all available integrations</p></div></div><div class="code
       <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="nx">command_runner</span><span class="p">[</span><span class="nx">command</span><span class="p">]();</span>
+    <span class="kd">var</span> <span class="nx">opts_modifier</span> <span class="o">=</span> <span class="nx">integration_instance</span><span class="p">.</span><span class="nx">opts</span><span class="p">[</span><span class="nx">command</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">opts_modifier</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">opts_modifier</span><span class="p">(</span><span class="nx">parser</span><span class="p">);</span>
+      <span class="nx">command_runner</span><span class="p">[</span><span class="nx">command</span><span class="p">].</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">_</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">parser</span><span class="p">.</span><span class="nx">parse</span><span class="p">()));</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">command_runner</span><span class="p">[</span><span class="nx">command</span><span class="p">]()</span>
+    <span class="p">};</span>
   <span class="p">});</span>
 <span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="is-integration-valid">is_integration_valid</h3>
 
@@ -85,4 +105,8 @@ command runner, an instantiated integration</p></div></div><div class="code"><di
       <span class="nx">cb</span><span class="p">(</span><span class="nx">settings</span><span class="p">);</span>
     <span class="p">});</span>
   <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">get_next_arg</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">process</span><span class="p">.</span><span class="nx">argv</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
 <span class="p">};</span></div></div></div></div></body></html>

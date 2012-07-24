@@ -16,109 +16,138 @@ integrate with Tracker.</p></div></div><div class="code"><div class="wrapper"><s
 
 <span class="kd">var</span> <span class="nx">STORY_TYPES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;bug&quot;</span><span class="p">,</span> <span class="s2">&quot;chore&quot;</span><span class="p">,</span> <span class="s2">&quot;feature&quot;</span><span class="p">,</span> <span class="s2">&quot;release&quot;</span><span class="p">];</span>
 
-<span class="kd">var</span> <span class="nx">project_id</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">project_id</span><span class="p">,</span> <span class="nx">commands</span> <span class="o">=</span> <span class="p">{},</span> <span class="nx">opts</span> <span class="o">=</span> <span class="p">{};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h2 id="general-listing-commands">general listing commands</h2></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="todo">todo</h3>
 
-<span class="kd">var</span> <span class="nx">public_methods</span> <span class="o">=</span> <span class="p">{</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h2 id="general-listing-commands">general listing commands</h2></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="todo">todo</h3>
-
-<p>displays a list of started and unstarted stories in current, plus the entire backlog</p></div></div><div class="code"><div class="wrapper">  <span class="s2">&quot;todo&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">getCurrentIteration</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">current_res</span><span class="p">)</span> <span class="p">{</span>
-      <span class="kd">var</span> <span class="nx">stories</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="nx">current_res</span><span class="p">.</span><span class="nx">iteration</span><span class="p">.</span><span class="nx">stories</span><span class="p">.</span><span class="nx">story</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">story</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">_</span><span class="p">.</span><span class="nx">include</span><span class="p">([</span><span class="s2">&quot;accepted&quot;</span><span class="p">,</span> <span class="s2">&quot;finished&quot;</span><span class="p">,</span> <span class="s2">&quot;delivered&quot;</span><span class="p">],</span> <span class="nx">story</span><span class="p">.</span><span class="nx">current_state</span><span class="p">);</span>
-      <span class="p">});</span>
-
-      <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">getBacklogIterations</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">backlog_res</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">stories</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">sortBy</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">union</span><span class="p">(</span><span class="nx">stories</span><span class="p">,</span> <span class="nx">get_stories_from_iterations</span><span class="p">(</span><span class="nx">backlog_res</span><span class="p">.</span><span class="nx">iteration</span><span class="p">)),</span> <span class="s2">&quot;current_state&quot;</span><span class="p">);</span>
-        <span class="nx">print_stories</span><span class="p">(</span><span class="nx">stories</span><span class="p">,</span> <span class="s2">&quot;No stories to work on&quot;</span><span class="p">);</span>
-      <span class="p">});</span>
+<p>displays a list of started and unstarted stories in current, plus the entire backlog</p></div></div><div class="code"><div class="wrapper"><span class="nx">commands</span><span class="p">.</span><span class="nx">todo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">getCurrentIteration</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">current_res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">stories</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="nx">current_res</span><span class="p">.</span><span class="nx">iteration</span><span class="p">.</span><span class="nx">stories</span><span class="p">.</span><span class="nx">story</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">story</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">_</span><span class="p">.</span><span class="nx">include</span><span class="p">([</span><span class="s2">&quot;accepted&quot;</span><span class="p">,</span> <span class="s2">&quot;finished&quot;</span><span class="p">,</span> <span class="s2">&quot;delivered&quot;</span><span class="p">],</span> <span class="nx">story</span><span class="p">.</span><span class="nx">current_state</span><span class="p">);</span>
     <span class="p">});</span>
-  <span class="p">},</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="current">current</h3>
 
-<p>displays the current iteration</p></div></div><div class="code"><div class="wrapper">  <span class="s2">&quot;current&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">getCurrentIteration</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">print_stories</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">iteration</span><span class="p">.</span><span class="nx">stories</span><span class="p">.</span><span class="nx">story</span><span class="p">,</span> <span class="s2">&quot;No stories in current iteration&quot;</span><span class="p">);</span>
+    <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">getBacklogIterations</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">backlog_res</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">stories</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">sortBy</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">union</span><span class="p">(</span><span class="nx">stories</span><span class="p">,</span> <span class="nx">get_stories_from_iterations</span><span class="p">(</span><span class="nx">backlog_res</span><span class="p">.</span><span class="nx">iteration</span><span class="p">)),</span> <span class="s2">&quot;current_state&quot;</span><span class="p">);</span>
+      <span class="nx">print_stories</span><span class="p">(</span><span class="nx">stories</span><span class="p">,</span> <span class="s2">&quot;No stories to work on&quot;</span><span class="p">);</span>
     <span class="p">});</span>
-  <span class="p">},</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="backlog">backlog</h3>
+  <span class="p">});</span>
+<span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="current">current</h3>
 
-<p>displays all backlog iterations</p></div></div><div class="code"><div class="wrapper">  <span class="s2">&quot;backlog&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">getBacklogIterations</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">print_stories</span><span class="p">(</span><span class="nx">get_stories_from_iterations</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">iteration</span><span class="p">),</span> <span class="s2">&quot;No stories in backlog&quot;</span><span class="p">);</span>
-    <span class="p">});</span>
-  <span class="p">},</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="scheduled">scheduled</h3>
+<p>displays the current iteration</p></div></div><div class="code"><div class="wrapper"><span class="nx">commands</span><span class="p">.</span><span class="nx">current</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">getCurrentIteration</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">print_stories</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">iteration</span><span class="p">.</span><span class="nx">stories</span><span class="p">.</span><span class="nx">story</span><span class="p">,</span> <span class="s2">&quot;No stories in current iteration&quot;</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="backlog">backlog</h3>
 
-<p>displays anything in current or backlog that is not yet accepted</p></div></div><div class="code"><div class="wrapper">  <span class="s2">&quot;scheduled&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">getCurrentBacklogIterations</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-      <span class="kd">var</span> <span class="nx">stories</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="nx">get_stories_from_iterations</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">iteration</span><span class="p">),</span> <span class="kd">function</span><span class="p">(</span><span class="nx">story</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">story</span><span class="p">.</span><span class="nx">current_state</span> <span class="o">===</span> <span class="s2">&quot;accepted&quot;</span><span class="p">;</span>
-      <span class="p">});</span>
-      <span class="nx">print_stories</span><span class="p">(</span><span class="nx">stories</span><span class="p">,</span> <span class="s2">&quot;No scheduled stories stories&quot;</span><span class="p">);</span>
-    <span class="p">});</span>
-  <span class="p">},</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="icebox">icebox</h3>
+<p>displays all backlog iterations</p></div></div><div class="code"><div class="wrapper"><span class="nx">commands</span><span class="p">.</span><span class="nx">backlog</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">getBacklogIterations</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">print_stories</span><span class="p">(</span><span class="nx">get_stories_from_iterations</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">iteration</span><span class="p">),</span> <span class="s2">&quot;No stories in backlog&quot;</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="scheduled">scheduled</h3>
 
-<p>displays all unscheduled stories</p></div></div><div class="code"><div class="wrapper">  <span class="s2">&quot;icebox&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">getStories</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;filter&quot;</span><span class="o">:</span> <span class="s2">&quot;current_state:unscheduled&quot;</span> <span class="p">}],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">print_stories</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">story</span><span class="p">,</span> <span class="s2">&quot;No stories in icebox&quot;</span><span class="p">);</span>
+<p>displays anything in current or backlog that is not yet accepted</p></div></div><div class="code"><div class="wrapper"><span class="nx">commands</span><span class="p">.</span><span class="nx">scheduled</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">getCurrentBacklogIterations</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">stories</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="nx">get_stories_from_iterations</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">iteration</span><span class="p">),</span> <span class="kd">function</span><span class="p">(</span><span class="nx">story</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">story</span><span class="p">.</span><span class="nx">current_state</span> <span class="o">===</span> <span class="s2">&quot;accepted&quot;</span><span class="p">;</span>
     <span class="p">});</span>
-  <span class="p">},</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="show">show</h3>
+    <span class="nx">print_stories</span><span class="p">(</span><span class="nx">stories</span><span class="p">,</span> <span class="s2">&quot;No scheduled stories stories&quot;</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="icebox">icebox</h3>
+
+<p>displays all unscheduled stories</p></div></div><div class="code"><div class="wrapper"><span class="nx">commands</span><span class="p">.</span><span class="nx">icebox</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">getStories</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;filter&quot;</span><span class="o">:</span> <span class="s2">&quot;current_state:unscheduled&quot;</span> <span class="p">}],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">print_stories</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">story</span><span class="p">,</span> <span class="s2">&quot;No stories in icebox&quot;</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="stories">stories</h3>
+
+<p>displays all stories</p></div></div><div class="code"><div class="wrapper"><span class="nx">commands</span><span class="p">.</span><span class="nx">stories</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">getStories</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">,</span> <span class="p">{}],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">print_stories</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">story</span><span class="p">,</span> <span class="s2">&quot;No stories to display&quot;</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="show">show</h3>
+
+<ul>
+<li>story_id: Integer</li>
+</ul>
 
 <p>Displays the details for a particular story</p>
 
 <p>This gives you the all the information pertinent to a story in tabular form -
-from its basic details, to tasks, comments, and attachments</p></div></div><div class="code"><div class="wrapper">  <span class="s2">&quot;show&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">story_id</span> <span class="o">=</span> <span class="nx">utilities</span><span class="p">.</span><span class="nx">get_next_arg</span><span class="p">();</span>
-    <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">getStory</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">,</span> <span class="nx">story_id</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">story_res</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">display_story</span><span class="p">(</span><span class="nx">story_res</span><span class="p">);</span>
-    <span class="p">});</span>
-  <span class="p">},</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h2 id="general-editing-commands">general editing commands</h2></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="add">add</h3>
+from its basic details, to tasks, comments, and attachments</p></div></div><div class="code"><div class="wrapper"><span class="nx">opts</span><span class="p">.</span><span class="nx">show</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">opts</span><span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s2">&quot;story_id&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">2</span>
+                          <span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;ID of the Tracker story to be estimated&quot;</span>
+                          <span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+                          <span class="p">});</span>
+<span class="p">};</span>
+<span class="nx">commands</span><span class="p">.</span><span class="nx">show</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">story_id</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">getStory</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">,</span> <span class="nx">story_id</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">story_res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">display_story</span><span class="p">(</span><span class="nx">story_res</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h2 id="general-editing-commands">general editing commands</h2></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="add">add</h3>
 
 <p>add a new story</p>
 
 <p>You will be prompted for the various necessary fields; once the story has
-been created, you can choose to schedule it immediately</p></div></div><div class="code"><div class="wrapper">  <span class="s2">&quot;add&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">get_story_attributes</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">story_attributes</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">addStory</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">,</span> <span class="nx">story_attributes</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;\nAdded story with id: &quot;</span> <span class="o">+</span> <span class="nx">res</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;You can view it at: &quot;</span> <span class="o">+</span> <span class="nx">res</span><span class="p">.</span><span class="nx">url</span> <span class="o">+</span> <span class="s2">&quot;\n&quot;</span><span class="p">);</span>
+been created, you can choose to schedule it immediately</p></div></div><div class="code"><div class="wrapper"><span class="nx">commands</span><span class="p">.</span><span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">get_story_attributes</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">story_attributes</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">addStory</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">,</span> <span class="nx">story_attributes</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;\nAdded story with id: &quot;</span> <span class="o">+</span> <span class="nx">res</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;You can view it at: &quot;</span> <span class="o">+</span> <span class="nx">res</span><span class="p">.</span><span class="nx">url</span> <span class="o">+</span> <span class="s2">&quot;\n&quot;</span><span class="p">);</span>
 
-        <span class="nx">commander</span><span class="p">.</span><span class="nx">confirm</span><span class="p">(</span><span class="s2">&quot;Would you like to schedule this story? &quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">yes</span><span class="p">)</span> <span class="p">{</span>
-          <span class="k">if</span> <span class="p">(</span><span class="nx">yes</span><span class="p">)</span> <span class="nx">schedule_story</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
-          <span class="nx">process</span><span class="p">.</span><span class="nx">stdin</span><span class="p">.</span><span class="nx">destroy</span><span class="p">();</span>
-        <span class="p">});</span>
+      <span class="nx">commander</span><span class="p">.</span><span class="nx">confirm</span><span class="p">(</span><span class="s2">&quot;Would you like to schedule this story? &quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">yes</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">yes</span><span class="p">)</span> <span class="nx">schedule_story</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+        <span class="nx">process</span><span class="p">.</span><span class="nx">stdin</span><span class="p">.</span><span class="nx">destroy</span><span class="p">();</span>
       <span class="p">});</span>
     <span class="p">});</span>
-  <span class="p">},</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="estimate">estimate</h3>
+  <span class="p">});</span>
+<span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="estimate">estimate</h3>
 
 <ul>
 <li>story_id: Integer</li>
 <li>estimate: Integer</li>
 </ul>
 
-<p>quickly estimate a story</p></div></div><div class="code"><div class="wrapper">  <span class="s2">&quot;estimate&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">update_story</span><span class="p">(</span><span class="nx">utilities</span><span class="p">.</span><span class="nx">get_next_arg</span><span class="p">(),</span> <span class="p">{</span> <span class="s2">&quot;estimate&quot;</span><span class="o">:</span> <span class="nx">utilities</span><span class="p">.</span><span class="nx">get_next_arg</span><span class="p">()</span> <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Story has been estimated&quot;</span><span class="p">);</span>
-    <span class="p">});</span>
-  <span class="p">},</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="schedule">schedule</h3>
+<p>quickly estimate a story</p></div></div><div class="code"><div class="wrapper"><span class="nx">opts</span><span class="p">.</span><span class="nx">estimate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">opts</span><span class="p">.</span><span class="nx">options</span><span class="p">({</span> <span class="s2">&quot;story_id&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">2</span>
+                             <span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;ID of the Tracker story to be estimated&quot;</span>
+                             <span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+                             <span class="p">}</span>
+               <span class="p">,</span> <span class="s2">&quot;estimate&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">3</span>
+                             <span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;# of story points&quot;</span>
+                             <span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+                             <span class="p">}</span>
+               <span class="p">});</span>
+<span class="p">};</span>
+<span class="nx">commands</span><span class="p">.</span><span class="nx">estimate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">story_id</span><span class="p">,</span> <span class="nx">estimate</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">update_story</span><span class="p">(</span><span class="nx">story_id</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;estimate&quot;</span><span class="o">:</span> <span class="nx">estimate</span> <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Story has been estimated&quot;</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="schedule">schedule</h3>
 
 <ul>
 <li>story_id: Integer</li>
 </ul>
 
-<p>move a story to the end of the backlog (regardless of current location)</p></div></div><div class="code"><div class="wrapper">  <span class="s2">&quot;schedule&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">schedule_story</span><span class="p">(</span><span class="nx">utilities</span><span class="p">.</span><span class="nx">get_next_arg</span><span class="p">(),</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Story has been scheduled&quot;</span><span class="p">);</span>
-    <span class="p">});</span>
-  <span class="p">},</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="deliver-finished">deliver_finished</h3>
+<p>move a story to the end of the backlog (regardless of current location)</p></div></div><div class="code"><div class="wrapper"><span class="nx">opts</span><span class="p">.</span><span class="nx">schedule</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">opts</span><span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s2">&quot;story_id&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">2</span>
+                          <span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;ID of the Tracker story to be estimated&quot;</span>
+                          <span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+                          <span class="p">});</span>
+<span class="p">};</span>
+<span class="nx">commands</span><span class="p">.</span><span class="nx">schedule</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">story_id</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">schedule_story</span><span class="p">(</span><span class="nx">story_id</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Story has been scheduled&quot;</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="deliver-finished">deliver_finished</h3>
 
-<p>deliver all finished stories - perfect for a roll out to staging</p></div></div><div class="code"><div class="wrapper">  <span class="s2">&quot;deliver_finished&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">deliverAllFinishedStories</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;All finished stories now marked as delivered&quot;</span><span class="p">);</span>
-    <span class="p">});</span>
-  <span class="p">}</span>
+<p>deliver all finished stories - perfect for a roll out to staging</p></div></div><div class="code"><div class="wrapper"><span class="nx">commands</span><span class="p">.</span><span class="nx">deliver_finished</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">deliverAllFinishedStories</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;All finished stories now marked as delivered&quot;</span><span class="p">);</span>
+  <span class="p">});</span>
 <span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h2 id="verbal-commands">verbal commands</h2>
 
 <p>Verbal commands take two forms:  updating and listing.  They are formed by
 the several possible states that a story may take without special cases.
 As such, they are all written by using metaprogramming to a add all the
-functions to the public_methods hash.</p>
+functions to the commands hash.</p>
 
 <h3 id="updating">Updating:</h3>
 
@@ -135,14 +164,20 @@ functions to the public_methods hash.</p>
 <h6 id="started-finished-delivered-accepted-unstarted">started, finished, delivered, accepted, unstarted</h6>
 
 <p>Display a list of stories with the specified current_state filter applied.</p></div></div><div class="code"><div class="wrapper"><span class="nx">_</span><span class="p">.</span><span class="nx">each</span><span class="p">([</span><span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;finish&quot;</span><span class="p">,</span> <span class="s2">&quot;deliver&quot;</span><span class="p">,</span> <span class="s2">&quot;accept&quot;</span><span class="p">,</span> <span class="s2">&quot;unstart&quot;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">verb</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">public_methods</span><span class="p">[</span><span class="nx">verb</span><span class="p">]</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">update_story</span><span class="p">(</span><span class="nx">utilities</span><span class="p">.</span><span class="nx">get_next_arg</span><span class="p">(),</span> <span class="p">{</span> <span class="nx">current_state</span><span class="o">:</span> <span class="nx">participle</span> <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">opts</span><span class="p">[</span><span class="nx">verb</span><span class="p">]</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">opts</span><span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s2">&quot;story_id&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">2</span>
+                            <span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;ID of the Tracker story to be estimated&quot;</span>
+                            <span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+                            <span class="p">});</span>
+  <span class="p">};</span>
+  <span class="nx">commands</span><span class="p">[</span><span class="nx">verb</span><span class="p">]</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">story_id</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">update_story</span><span class="p">(</span><span class="nx">story_id</span><span class="p">,</span> <span class="p">{</span> <span class="nx">current_state</span><span class="o">:</span> <span class="nx">participle</span> <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Story \&quot;&quot;</span> <span class="o">+</span> <span class="nx">res</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot;\&quot; has been &quot;</span> <span class="o">+</span> <span class="nx">participle</span><span class="p">);</span>
     <span class="p">});</span>
   <span class="p">};</span>
 
   <span class="kd">var</span> <span class="nx">participle</span> <span class="o">=</span> <span class="nx">verb</span> <span class="o">+</span> <span class="s2">&quot;ed&quot;</span>
-  <span class="nx">public_methods</span><span class="p">[</span><span class="nx">participle</span><span class="p">]</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">commands</span><span class="p">[</span><span class="nx">participle</span><span class="p">]</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">getStories</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;filter&quot;</span><span class="o">:</span> <span class="s2">&quot;current_state:&quot;</span> <span class="o">+</span> <span class="nx">participle</span> <span class="p">}],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">print_stories</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">story</span><span class="p">,</span> <span class="s2">&quot;No stories are currently &quot;</span> <span class="o">+</span> <span class="nx">participle</span><span class="p">);</span>
     <span class="p">});</span>
@@ -161,7 +196,7 @@ functions to the public_methods hash.</p>
     <span class="k">if</span> <span class="p">(</span><span class="nx">settings</span><span class="p">.</span><span class="nx">project_id</span><span class="p">)</span> <span class="nx">project_id</span> <span class="o">=</span> <span class="nx">settings</span><span class="p">.</span><span class="nx">project_id</span><span class="p">;</span>
   <span class="p">}</span>
 
-  <span class="k">return</span> <span class="nx">public_methods</span><span class="p">;</span>
+  <span class="k">return</span> <span class="p">{</span> <span class="s2">&quot;commands&quot;</span><span class="o">:</span> <span class="nx">commands</span><span class="p">,</span> <span class="s2">&quot;opts&quot;</span><span class="o">:</span> <span class="nx">opts</span> <span class="p">};</span>
 <span class="p">};</span>
 
 <span class="kd">function</span> <span class="nx">print_stories</span><span class="p">(</span><span class="nx">stories</span><span class="p">,</span> <span class="nx">no_stories_message</span><span class="p">)</span> <span class="p">{</span>
