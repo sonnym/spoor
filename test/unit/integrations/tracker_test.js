@@ -152,6 +152,21 @@ exports.add_task_command = function(test) {
   });
 };
 
+exports.complete_task_command = function(test) {
+  nock("https://www.pivotaltracker.com")
+      .put("/services/v3/projects/1/stories/1/tasks/1", "<task><complete>true</complete></task>")
+      .reply(200);
+
+  new tracker({ "token": "n/a", "project_id": 1 }).commands.complete_task({ story_id: 1, task_id: 1 });
+
+  var mock = sinon.mock(console).expects("log").exactly(1);
+  helper.wait_for(function() { return mock.callCount === 1 }, function() {
+    console.log.restore();
+    test.equal(mock.args[0], "Task has been completed");
+    test.done();
+  });
+};
+
 exports.attach_command = function(test) {
   nock("https://www.pivotaltracker.com")
       .filteringRequestBody(function(path) {
