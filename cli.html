@@ -74,7 +74,7 @@ command after loading all available integrations</p></div></div><div class="code
     <span class="kd">var</span> <span class="nx">opts_modifier</span> <span class="o">=</span> <span class="nx">integration_instance</span><span class="p">.</span><span class="nx">opts</span><span class="p">[</span><span class="nx">command</span><span class="p">];</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">opts_modifier</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">opts_modifier</span><span class="p">(</span><span class="nx">parser</span><span class="p">);</span>
-      <span class="nx">command_runner</span><span class="p">[</span><span class="nx">command</span><span class="p">].</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">_</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">parser</span><span class="p">.</span><span class="nx">parse</span><span class="p">()));</span>
+      <span class="nx">command_runner</span><span class="p">[</span><span class="nx">command</span><span class="p">].</span><span class="nx">call</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">parser</span><span class="p">.</span><span class="nx">parse</span><span class="p">());</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
       <span class="nx">command_runner</span><span class="p">[</span><span class="nx">command</span><span class="p">]()</span>
     <span class="p">};</span>
