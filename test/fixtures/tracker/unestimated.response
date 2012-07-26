@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stories type="array" count="1" total="1">
+  <story>
+    <id type="integer">30251895</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251895</url>
+    <estimate type="integer">-1</estimate>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Admin should be able to save blog articles in draft mode</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:14:00 UTC</updated_at>
+    <labels>admin,blog</labels>
+  </story>
+  <story>
+    <id type="integer">30251897</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251897</url>
+    <estimate type="integer">-1</estimate>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Published blog articles should appear on the site</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:14:00 UTC</updated_at>
+    <labels>blog</labels>
+  </story>
+</stories>

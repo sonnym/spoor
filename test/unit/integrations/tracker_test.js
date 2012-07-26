@@ -80,6 +80,18 @@ exports.icebox_command = function(test) {
   });
 };
 
+exports.unestimated_command = function(test) {
+  get_command_in_context("unestimated", "/services/v3/projects/1/stories?filter=estimate%3A-1", function(output_data) {
+    var mock = sinon.mock(console).expects("log").once();
+    helper.wait_for(function() { return mock.callCount === 1 }, function() {
+      console.log.restore();
+      mock.verify();
+      test.equal(mock.args[0], output_data.toString());
+      test.done();
+    });
+  });
+};
+
 exports.stories_command = function(test) {
   get_command_in_context("stories", "/services/v3/projects/1/stories?", function(output_data) {
     var mock = sinon.mock(console).expects("log").once();
