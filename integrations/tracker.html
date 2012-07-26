@@ -62,6 +62,12 @@ integrate with Tracker.</p></div></div><div class="code"><div class="wrapper"><s
   <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">getStories</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;filter&quot;</span><span class="o">:</span> <span class="s2">&quot;current_state:unscheduled&quot;</span> <span class="p">}],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">print_stories</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">story</span><span class="p">,</span> <span class="s2">&quot;No stories in icebox&quot;</span><span class="p">);</span>
   <span class="p">});</span>
+<span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="unestimated">unestimated</h3>
+
+<p>displays all unestimated stories</p></div></div><div class="code"><div class="wrapper"><span class="nx">commands</span><span class="p">.</span><span class="nx">unestimated</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">getStories</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;filter&quot;</span><span class="o">:</span> <span class="s2">&quot;estimate:-1&quot;</span> <span class="p">}],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">print_stories</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">story</span><span class="p">,</span> <span class="s2">&quot;No stories to display&quot;</span><span class="p">);</span>
+  <span class="p">});</span>
 <span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="stories">stories</h3>
 
 <p>displays all stories</p></div></div><div class="code"><div class="wrapper"><span class="nx">commands</span><span class="p">.</span><span class="nx">stories</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -100,6 +106,19 @@ been created, you can choose to schedule it immediately</p></div></div><div clas
         <span class="nx">process</span><span class="p">.</span><span class="nx">stdin</span><span class="p">.</span><span class="nx">destroy</span><span class="p">();</span>
       <span class="p">});</span>
     <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="rm">rm</h3>
+
+<ul>
+<li>story_id: Integer</li>
+</ul>
+
+<p>remove a story</p></div></div><div class="code"><div class="wrapper"><span class="nx">opts</span><span class="p">.</span><span class="nx">rm</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">parser</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">parser</span><span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s2">&quot;story_id&quot;</span><span class="p">,</span> <span class="nx">common_options</span><span class="p">.</span><span class="nx">story_id</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="nx">commands</span><span class="p">.</span><span class="nx">rm</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">removeStory</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">,</span> <span class="nx">opts</span><span class="p">.</span><span class="nx">story_id</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">story</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Story \&quot;&quot;</span> <span class="o">+</span> <span class="nx">story</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot;\&quot; has been removed&quot;</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="estimate">estimate</h3>
 
@@ -205,8 +224,7 @@ been created, you can choose to schedule it immediately</p></div></div><div clas
       <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="kd">var</span> <span class="nx">filename</span> <span class="o">=</span> <span class="nx">resolved_filename</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span> <span class="nx">resolved_filename</span><span class="p">.</span><span class="nx">lastIndexOf</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">sep</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
-                                              <span class="p">,</span> <span class="nx">resolved_filename</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">filename</span> <span class="o">=</span> <span class="nx">resolved_filename</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">resolved_filename</span><span class="p">.</span><span class="nx">lastIndexOf</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">sep</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
     <span class="kd">var</span> <span class="nx">file_data</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="nx">data</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="nx">opts</span><span class="p">.</span><span class="nx">name</span> <span class="o">||</span> <span class="nx">filename</span> <span class="p">};</span>
 
     <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">addStoryAttachment</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">,</span> <span class="nx">opts</span><span class="p">.</span><span class="nx">story_id</span><span class="p">,</span> <span class="nx">file_data</span><span class="p">],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
