@@ -1,6 +1,8 @@
 {
-  "author": "Sonny Michaud <michaud.sonny@gmail.com>",
   "name": "spoor",
+  "homepage": "http://sonnym.github.com/spoor/",
+
+  "author": "Sonny Michaud <michaud.sonny@gmail.com>",
 
   "bin" : { "spoor": "./bin/spoor.js" },
   "scripts": {
