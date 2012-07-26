@@ -115,6 +115,22 @@ exports.show_command = function(test) {
   });
 };
 
+exports.rm_command = function(test) {
+  helper.load_fixture("tracker/rm.response", function(response_data) {
+    nock("https://www.pivotaltracker.com")
+        .delete("/services/v3/projects/1/stories/1").reply(200, response_data);
+
+    new tracker({ "token": "n/a", "project_id": 1 }).commands.rm({ story_id: 1 });
+
+    var mock = sinon.mock(console).expects("log").exactly(1);
+    helper.wait_for(function() { return mock.callCount === 1 }, function() {
+      console.log.restore();
+      test.equal(mock.args[0], "Story \"The ephemeral one\" has been removed");
+      test.done();
+    });
+  });
+};
+
 exports.estimate_command = function(test) {
   helper.load_fixture("tracker/estimate.response", function(response_data) {
     nock("https://www.pivotaltracker.com")
