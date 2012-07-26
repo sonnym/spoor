@@ -376,6 +376,14 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                         "slug": "show"
                       },
                       "depth": 3
+                    }, {
+                      "type": "heading",
+                      "data": {
+                        "level": 3,
+                        "title": "labels",
+                        "slug": "labels"
+                      },
+                      "depth": 3
                     }
                   ]
                 }, {
@@ -474,25 +482,6 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                       "type": "heading",
                       "data": {
                         "level": 3,
-                        "title": "Updating:",
-                        "slug": "updating"
-                      },
-                      "depth": 3,
-                      "children": [
-                        {
-                          "type": "heading",
-                          "data": {
-                            "level": 6,
-                            "title": "start, finish, deliver, accept, unstart",
-                            "slug": "start-finish-deliver-accept-unstart"
-                          },
-                          "depth": 6
-                        }
-                      ]
-                    }, {
-                      "type": "heading",
-                      "data": {
-                        "level": 3,
                         "title": "Listing:",
                         "slug": "listing"
                       },
@@ -504,6 +493,25 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                             "level": 6,
                             "title": "started, finished, delivered, accepted, unstarted",
                             "slug": "started-finished-delivered-accepted-unstarted"
+                          },
+                          "depth": 6
+                        }
+                      ]
+                    }, {
+                      "type": "heading",
+                      "data": {
+                        "level": 3,
+                        "title": "Updating:",
+                        "slug": "updating"
+                      },
+                      "depth": 3,
+                      "children": [
+                        {
+                          "type": "heading",
+                          "data": {
+                            "level": 6,
+                            "title": "start, finish, deliver, accept, unstart",
+                            "slug": "start-finish-deliver-accept-unstart"
                           },
                           "depth": 6
                         }
@@ -596,6 +604,14 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     "level": 3,
                     "title": "show",
                     "slug": "show"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "labels",
+                    "slug": "labels"
                   },
                   "depth": 3
                 }
@@ -696,25 +712,6 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "type": "heading",
                   "data": {
                     "level": 3,
-                    "title": "Updating:",
-                    "slug": "updating"
-                  },
-                  "depth": 3,
-                  "children": [
-                    {
-                      "type": "heading",
-                      "data": {
-                        "level": 6,
-                        "title": "start, finish, deliver, accept, unstart",
-                        "slug": "start-finish-deliver-accept-unstart"
-                      },
-                      "depth": 6
-                    }
-                  ]
-                }, {
-                  "type": "heading",
-                  "data": {
-                    "level": 3,
                     "title": "Listing:",
                     "slug": "listing"
                   },
@@ -726,6 +723,25 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                         "level": 6,
                         "title": "started, finished, delivered, accepted, unstarted",
                         "slug": "started-finished-delivered-accepted-unstarted"
+                      },
+                      "depth": 6
+                    }
+                  ]
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Updating:",
+                    "slug": "updating"
+                  },
+                  "depth": 3,
+                  "children": [
+                    {
+                      "type": "heading",
+                      "data": {
+                        "level": 6,
+                        "title": "start, finish, deliver, accept, unstart",
+                        "slug": "start-finish-deliver-accept-unstart"
                       },
                       "depth": 6
                     }
