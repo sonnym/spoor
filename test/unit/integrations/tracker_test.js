@@ -189,7 +189,7 @@ exports.add_task_command = function(test) {
       .post("/services/v3/projects/1/stories/1/tasks", "<task><description>Foo and Bar</description></task>")
       .reply(200);
 
-  new tracker({ "token": "n/a", "project_id": 1 }).commands.add_task({ story_id: 1, description: "Foo and Bar" });
+  new tracker({ "token": "n/a", "project_id": 1 }).commands.add_task({ story_id: 1, task: "Foo and Bar" });
 
   var mock = sinon.mock(console).expects("log").exactly(1);
   helper.wait_for(function() { return mock.callCount === 1 }, function() {
