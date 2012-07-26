@@ -115,6 +115,25 @@ exports.show_command = function(test) {
   });
 };
 
+exports.labels_command = function(test) {
+  helper.load_fixture("tracker/labels.response", function(response_data) {
+    nock("https://www.pivotaltracker.com")
+        .get("/services/v3/projects/1/stories?").reply(200, response_data);
+
+    new tracker({ "token": "n/a", "project_id": 1 }).commands.labels();
+
+    var mock = sinon.mock(console).expects("log").exactly(1);
+    helper.wait_for(function() { return mock.callCount === 1 }, function() {
+      console.log.restore();
+      test.equal(mock.args[0], ["Labels used in this project are: admin, blog, cart, checkout,",
+                                "deployment, design, epic, featured products, ie6, needs discussion,",
+                                "orders, reporting, search, shopper accounts, shopping, signup / signin,",
+                                "tracker, usability, user generated content"].join(" "));
+      test.done();
+    });
+  });
+};
+
 exports.rm_command = function(test) {
   helper.load_fixture("tracker/rm.response", function(response_data) {
     nock("https://www.pivotaltracker.com")

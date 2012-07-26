@@ -1,0 +1,976 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stories type="array" count="59" total="59">
+  <story>
+    <id type="integer">30251799</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>chore</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251799</url>
+    <current_state>accepted</current_state>
+    <description>We need 2 machines set up</description>
+    <name>Setup development environment</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/07 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:13:57 UTC</updated_at>
+    <accepted_at type="datetime">2012/05/08 00:00:00 UTC</accepted_at>
+    <notes type="array">
+      <note>
+        <id type="integer">23290097</id>
+        <text>What's our budget for the machines?</text>
+        <author>Sonny Michaud</author>
+        <noted_at type="datetime">2012/05/27 03:13:57 UTC</noted_at>
+      </note>
+    </notes>
+  </story>
+  <story>
+    <id type="integer">30251801</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>chore</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251801</url>
+    <current_state>accepted</current_state>
+    <description>Should be accessible from outside the network, with basic auth</description>
+    <name>Setup demo server</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/07 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:13:57 UTC</updated_at>
+    <accepted_at type="datetime">2012/05/08 00:00:00 UTC</accepted_at>
+    <labels>deployment</labels>
+  </story>
+  <story>
+    <id type="integer">30251803</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251803</url>
+    <estimate type="integer">2</estimate>
+    <current_state>accepted</current_state>
+    <description>Admin should be a special user type. We can create the first admin user directly in the DB, but let's encrypt the password.</description>
+    <name>Admin should be able to login</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/07 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:13:57 UTC</updated_at>
+    <accepted_at type="datetime">2012/05/08 00:00:00 UTC</accepted_at>
+    <labels>admin</labels>
+  </story>
+  <story>
+    <id type="integer">30251805</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251805</url>
+    <estimate type="integer">1</estimate>
+    <current_state>accepted</current_state>
+    <description>Product information includes title, description, price, SKU.</description>
+    <name>Admin should be able to create new product</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/07 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:13:57 UTC</updated_at>
+    <accepted_at type="datetime">2012/05/08 00:00:00 UTC</accepted_at>
+    <labels>admin</labels>
+  </story>
+  <story>
+    <id type="integer">30251807</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251807</url>
+    <estimate type="integer">2</estimate>
+    <current_state>accepted</current_state>
+    <description></description>
+    <name>Admin should be able to upload product photo</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/07 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:13:57 UTC</updated_at>
+    <accepted_at type="datetime">2012/05/08 00:00:00 UTC</accepted_at>
+    <labels>admin</labels>
+  </story>
+  <story>
+    <id type="integer">30251809</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251809</url>
+    <estimate type="integer">3</estimate>
+    <current_state>accepted</current_state>
+    <description></description>
+    <name>Admin should be able to upload multiple product photos and mark one as the primary</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/07 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:13:57 UTC</updated_at>
+    <accepted_at type="datetime">2012/05/15 00:00:00 UTC</accepted_at>
+    <labels>admin</labels>
+  </story>
+  <story>
+    <id type="integer">30251811</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251811</url>
+    <estimate type="integer">2</estimate>
+    <current_state>accepted</current_state>
+    <description></description>
+    <name>Shopper should see list of products, with primary photo as thumbnail</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/07 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:13:57 UTC</updated_at>
+    <accepted_at type="datetime">2012/05/15 00:00:00 UTC</accepted_at>
+    <labels>shopping</labels>
+  </story>
+  <story>
+    <id type="integer">30251813</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251813</url>
+    <estimate type="integer">1</estimate>
+    <current_state>accepted</current_state>
+    <description></description>
+    <name>Product browsing should be paginated, with 10 products per page</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/07 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:13:57 UTC</updated_at>
+    <accepted_at type="datetime">2012/05/15 00:00:00 UTC</accepted_at>
+    <labels>shopping</labels>
+  </story>
+  <story>
+    <id type="integer">30251815</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251815</url>
+    <estimate type="integer">2</estimate>
+    <current_state>accepted</current_state>
+    <description></description>
+    <name>Make product browsing pagination AJAXy</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/07 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:13:58 UTC</updated_at>
+    <accepted_at type="datetime">2012/05/15 00:00:00 UTC</accepted_at>
+    <labels>shopping,usability</labels>
+    <notes type="array">
+      <note>
+        <id type="integer">23290099</id>
+        <text>Product list page to page transition should not reload browser page</text>
+        <author>Sonny Michaud</author>
+        <noted_at type="datetime">2012/05/27 03:13:58 UTC</noted_at>
+      </note>
+    </notes>
+  </story>
+  <story>
+    <id type="integer">30251817</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251817</url>
+    <estimate type="integer">3</estimate>
+    <current_state>accepted</current_state>
+    <description></description>
+    <name>Admin should be able to import multiple new products from CSV file</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/07 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:13:58 UTC</updated_at>
+    <accepted_at type="datetime">2012/05/15 00:00:00 UTC</accepted_at>
+    <labels>admin</labels>
+  </story>
+  <story>
+    <id type="integer">30251819</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251819</url>
+    <estimate type="integer">1</estimate>
+    <current_state>accepted</current_state>
+    <description></description>
+    <name>Shopper should be able to click on a product, and see all product details, including photos</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:13:58 UTC</updated_at>
+    <accepted_at type="datetime">2012/05/27 00:00:00 UTC</accepted_at>
+    <labels>shopping</labels>
+  </story>
+  <story>
+    <id type="integer">30251821</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251821</url>
+    <estimate type="integer">1</estimate>
+    <current_state>accepted</current_state>
+    <description></description>
+    <name>Shopper should be able to add product to shopping cart</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:13:58 UTC</updated_at>
+    <accepted_at type="datetime">2012/05/27 03:13:58 UTC</accepted_at>
+    <labels>cart,shopping</labels>
+  </story>
+  <story>
+    <id type="integer">30251833</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>chore</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251833</url>
+    <current_state>accepted</current_state>
+    <description></description>
+    <name>configure solr for full text searching</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <owned_by>Sonny Michaud</owned_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/06/21 23:51:35 UTC</updated_at>
+    <accepted_at type="datetime">2012/06/21 23:51:34 UTC</accepted_at>
+    <labels>search</labels>
+  </story>
+  <story>
+    <id type="integer">30251841</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>chore</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251841</url>
+    <current_state>accepted</current_state>
+    <description></description>
+    <name>Integrate with payment gateway</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <owned_by>Sonny Michaud</owned_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/06/21 23:51:40 UTC</updated_at>
+    <accepted_at type="datetime">2012/06/21 23:51:40 UTC</accepted_at>
+    <labels>checkout,shopping</labels>
+  </story>
+  <story>
+    <id type="integer">30251857</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>chore</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251857</url>
+    <current_state>accepted</current_state>
+    <description></description>
+    <name>Set up Engine Yard production environment</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <owned_by>Sonny Michaud</owned_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/06/21 23:52:23 UTC</updated_at>
+    <accepted_at type="datetime">2012/06/21 23:52:22 UTC</accepted_at>
+    <labels>deployment</labels>
+  </story>
+  <story>
+    <id type="integer">30251845</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251845</url>
+    <estimate type="integer">1</estimate>
+    <current_state>started</current_state>
+    <description></description>
+    <name>If system fails to authorize payment amount, display error message to shopper</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <owned_by>Sonny Michaud</owned_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/07/24 04:30:32 UTC</updated_at>
+    <labels>checkout,shopping</labels>
+    <notes type="array">
+      <note>
+        <id type="integer">26081569</id>
+        <text>test comment</text>
+        <author>Sonny Michaud</author>
+        <noted_at type="datetime">2012/07/24 04:23:23 UTC</noted_at>
+      </note>
+      <note>
+        <id type="integer">26081607</id>
+        <text>test comment</text>
+        <author>Sonny Michaud</author>
+        <noted_at type="datetime">2012/07/24 04:25:29 UTC</noted_at>
+      </note>
+      <note>
+        <id type="integer">26081617</id>
+        <text>test comment</text>
+        <author>Sonny Michaud</author>
+        <noted_at type="datetime">2012/07/24 04:25:48 UTC</noted_at>
+      </note>
+      <note>
+        <id type="integer">26081699</id>
+        <text>test comment</text>
+        <author>Sonny Michaud</author>
+        <noted_at type="datetime">2012/07/24 04:30:28 UTC</noted_at>
+      </note>
+      <note>
+        <id type="integer">26081705</id>
+        <text>test comment</text>
+        <author>Sonny Michaud</author>
+        <noted_at type="datetime">2012/07/24 04:30:32 UTC</noted_at>
+      </note>
+    </notes>
+  </story>
+  <story>
+    <id type="integer">30251847</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251847</url>
+    <estimate type="integer">1</estimate>
+    <current_state>rejected</current_state>
+    <description></description>
+    <name>If authorization is successful, show order number and confirmation message to shopper</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <owned_by>Sonny Michaud</owned_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/06/21 23:53:19 UTC</updated_at>
+    <labels>checkout,shopping</labels>
+  </story>
+  <story>
+    <id type="integer">30251851</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251851</url>
+    <estimate type="integer">2</estimate>
+    <current_state>rejected</current_state>
+    <description></description>
+    <name>Shopper should be able to check status of order by entering name and order number</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <owned_by>Sonny Michaud</owned_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/06/21 23:53:08 UTC</updated_at>
+    <labels>orders</labels>
+  </story>
+  <story>
+    <id type="integer">30251849</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251849</url>
+    <estimate type="integer">1</estimate>
+    <current_state>rejected</current_state>
+    <description></description>
+    <name>Send notification email of order placement to admin</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <owned_by>Sonny Michaud</owned_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/06/21 23:53:05 UTC</updated_at>
+    <labels>admin,checkout,shopping</labels>
+  </story>
+  <story>
+    <id type="integer">30251853</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251853</url>
+    <estimate type="integer">1</estimate>
+    <current_state>rejected</current_state>
+    <description>When checking status of order, shopper should have the option to ask a question. This should send email to admin.</description>
+    <name>Shopper should be able to ask question about order</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <owned_by>Sonny Michaud</owned_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/06/21 23:53:03 UTC</updated_at>
+    <labels>orders</labels>
+  </story>
+  <story>
+    <id type="integer">30251855</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251855</url>
+    <estimate type="integer">1</estimate>
+    <current_state>rejected</current_state>
+    <description></description>
+    <name>Admin can review all order questions and send responses to shoppers</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <owned_by>Sonny Michaud</owned_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/06/21 23:53:02 UTC</updated_at>
+    <labels>admin,orders</labels>
+  </story>
+  <story>
+    <id type="integer">30251839</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251839</url>
+    <estimate type="integer">1</estimate>
+    <current_state>started</current_state>
+    <description></description>
+    <name>Shopper should be able to enter credit card information and shipping address</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <owned_by>Sonny Michaud</owned_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/06/22 00:02:45 UTC</updated_at>
+    <labels>checkout,shopping</labels>
+  </story>
+  <story>
+    <id type="integer">30251835</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251835</url>
+    <estimate type="integer">3</estimate>
+    <current_state>started</current_state>
+    <description>One search field, search should look through product name, description, and SKU
+
+It should work really well.</description>
+    <name>Shopper should be able to search for product</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <owned_by>Sonny Michaud</owned_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/07/12 22:54:36 UTC</updated_at>
+    <labels>search,shopping</labels>
+    <notes type="array">
+      <note>
+        <id type="integer">25304041</id>
+        <text>test</text>
+        <author>Sonny Michaud</author>
+        <noted_at type="datetime">2012/07/09 04:49:51 UTC</noted_at>
+      </note>
+      <note>
+        <id type="integer">25304043</id>
+        <text>test</text>
+        <author>Sonny Michaud</author>
+        <noted_at type="datetime">2012/07/09 04:49:54 UTC</noted_at>
+      </note>
+    </notes>
+    <attachments type="array">
+      <attachment>
+        <id type="integer">9874835</id>
+        <filename>books.txt</filename>
+        <description></description>
+        <uploaded_by>Sonny Michaud</uploaded_by>
+        <uploaded_at type="datetime">2012/07/09 04:47:35 UTC</uploaded_at>
+        <url>https://www.pivotaltracker.com/resource/download/9874835</url>
+      </attachment>
+    </attachments>
+    <tasks type="array">
+      <task>
+        <id type="integer">8285365</id>
+        <description>Do something</description>
+        <position type="integer">1</position>
+        <complete type="boolean">true</complete>
+        <created_at type="datetime">2012/07/09 04:36:24 UTC</created_at>
+      </task>
+      <task>
+        <id type="integer">8285367</id>
+        <description>Do something else</description>
+        <position type="integer">2</position>
+        <complete type="boolean">false</complete>
+        <created_at type="datetime">2012/07/09 04:36:26 UTC</created_at>
+      </task>
+    </tasks>
+  </story>
+  <story>
+    <id type="integer">30251869</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251869</url>
+    <estimate type="integer">3</estimate>
+    <current_state>started</current_state>
+    <description>Show orders in last 60 days, with link to show older orders</description>
+    <name>Signed in shopper should be able to review order history</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/07/25 02:57:08 UTC</updated_at>
+    <labels>shopper accounts</labels>
+    <notes type="array">
+    </notes>
+    <attachments type="array">
+      <attachment>
+        <id type="integer">10317721</id>
+        <filename>Compound_of_five_cubes.png</filename>
+        <description></description>
+        <uploaded_by>Sonny Michaud</uploaded_by>
+        <uploaded_at type="datetime">2012/07/24 23:25:31 UTC</uploaded_at>
+        <url>https://www.pivotaltracker.com/resource/download/10317721</url>
+      </attachment>
+      <attachment>
+        <id type="integer">10317849</id>
+        <filename>attachment.png</filename>
+        <description></description>
+        <uploaded_by>Sonny Michaud</uploaded_by>
+        <uploaded_at type="datetime">2012/07/24 23:30:47 UTC</uploaded_at>
+        <url>https://www.pivotaltracker.com/resource/download/10317849</url>
+      </attachment>
+      <attachment>
+        <id type="integer">10317989</id>
+        <filename>attachment.png</filename>
+        <description></description>
+        <uploaded_by>Sonny Michaud</uploaded_by>
+        <uploaded_at type="datetime">2012/07/24 23:37:15 UTC</uploaded_at>
+        <url>https://www.pivotaltracker.com/resource/download/10317989</url>
+      </attachment>
+    </attachments>
+    <tasks type="array">
+      <task>
+        <id type="integer">8627887</id>
+        <description>do something awesome</description>
+        <position type="integer">1</position>
+        <complete type="boolean">true</complete>
+        <created_at type="datetime">2012/07/25 02:13:05 UTC</created_at>
+      </task>
+    </tasks>
+  </story>
+  <story>
+    <id type="integer">30251843</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251843</url>
+    <estimate type="integer">3</estimate>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>When shopper submits order, authorize total product amount from payment gateway</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <owned_by>Sonny Michaud</owned_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/07/06 20:18:11 UTC</updated_at>
+    <labels>checkout,needs discussion,shopping</labels>
+    <notes type="array">
+      <note>
+        <id type="integer">23290101</id>
+        <text>Should we store authorization code with order?</text>
+        <author>Sonny Michaud</author>
+        <noted_at type="datetime">2012/05/27 03:13:58 UTC</noted_at>
+      </note>
+    </notes>
+  </story>
+  <story>
+    <id type="integer">30251831</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251831</url>
+    <estimate type="integer">1</estimate>
+    <current_state>unstarted</current_state>
+    <description>Prompt for email address and personalized message, send email with product details and message</description>
+    <name>Shopper should be able to recommend a product to a friend</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <owned_by>Sonny Michaud</owned_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/06/21 23:55:15 UTC</updated_at>
+    <labels>shopping</labels>
+  </story>
+  <story>
+    <id type="integer">30251829</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>bug</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251829</url>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Some product photos not scaled properly when browsing products</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/06/21 23:55:08 UTC</updated_at>
+    <labels>shopping</labels>
+  </story>
+  <story>
+    <id type="integer">30251827</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251827</url>
+    <estimate type="integer">1</estimate>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Cart manipulation should be AJAXy</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/06/21 23:54:59 UTC</updated_at>
+    <labels>cart,shopping</labels>
+  </story>
+  <story>
+    <id type="integer">30251825</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251825</url>
+    <estimate type="integer">1</estimate>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Shopper should be able to remove product from shopping cart</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/06/21 23:54:52 UTC</updated_at>
+    <labels>cart,shopping</labels>
+  </story>
+  <story>
+    <id type="integer">30251823</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251823</url>
+    <estimate type="integer">2</estimate>
+    <current_state>unstarted</current_state>
+    <description>Cart icon in top right corner, with a number indicating how many items in cart</description>
+    <name>Shopper should be able to view contents of shopping cart</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/06/21 23:54:44 UTC</updated_at>
+    <labels>cart,shopping</labels>
+  </story>
+  <story>
+    <id type="integer">30251837</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>release</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251837</url>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Initial demo to investors</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/06/21 23:53:16 UTC</updated_at>
+  </story>
+  <story>
+    <id type="integer">30251859</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>release</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251859</url>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Beta launch</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/06/21 23:52:55 UTC</updated_at>
+    <deadline type="datetime">2012/06/30 16:00:00 UTC</deadline>
+  </story>
+  <story>
+    <id type="integer">30251861</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251861</url>
+    <estimate type="integer">2</estimate>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Shopper should be able to sign up for an account with email address</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:13:59 UTC</updated_at>
+    <labels>signup / signin</labels>
+  </story>
+  <story>
+    <id type="integer">30251863</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251863</url>
+    <estimate type="integer">1</estimate>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Shopper should be able to reset forgotten password</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:13:59 UTC</updated_at>
+    <labels>signup / signin</labels>
+  </story>
+  <story>
+    <id type="integer">30251865</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251865</url>
+    <estimate type="integer">1</estimate>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Shopper should be able to log out</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:13:59 UTC</updated_at>
+    <labels>signup / signin</labels>
+  </story>
+  <story>
+    <id type="integer">30251867</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251867</url>
+    <estimate type="integer">1</estimate>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>When checking out, shopper should have the option to sign in to their account</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:13:59 UTC</updated_at>
+    <labels>signup / signin</labels>
+  </story>
+  <story>
+    <id type="integer">30251871</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251871</url>
+    <estimate type="integer">2</estimate>
+    <current_state>unstarted</current_state>
+    <description>Credit card numbers should be stored encrypted</description>
+    <name>Signed in shopper should be able to save credit card and address information used in checkout</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:13:59 UTC</updated_at>
+    <labels>shopper accounts</labels>
+  </story>
+  <story>
+    <id type="integer">30251873</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251873</url>
+    <estimate type="integer">1</estimate>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Signed in shopper should be able to save product to favorites</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:13:59 UTC</updated_at>
+    <labels>shopper accounts</labels>
+  </story>
+  <story>
+    <id type="integer">30251875</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251875</url>
+    <estimate type="integer">1</estimate>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Signed in shopper should be able to review and remove product from favorites</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:13:59 UTC</updated_at>
+    <labels>shopper accounts</labels>
+  </story>
+  <story>
+    <id type="integer">30251877</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>chore</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251877</url>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Provide feedback to designer about look/feel of site</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:13:59 UTC</updated_at>
+    <labels>design</labels>
+  </story>
+  <story>
+    <id type="integer">30251879</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251879</url>
+    <estimate type="integer">3</estimate>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Apply styling to all shopper facing parts of the site, based on assets from designer</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:13:59 UTC</updated_at>
+    <labels>design</labels>
+  </story>
+  <story>
+    <id type="integer">30251881</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251881</url>
+    <estimate type="integer">2</estimate>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Signed in shopper should be able to post product reviews</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:13:59 UTC</updated_at>
+    <labels>user generated content</labels>
+  </story>
+  <story>
+    <id type="integer">30251883</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251883</url>
+    <estimate type="integer">1</estimate>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Signed in shopper should be able to rate product, by choosing 1-5 stars</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:14:00 UTC</updated_at>
+    <labels>user generated content</labels>
+  </story>
+  <story>
+    <id type="integer">30251885</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251885</url>
+    <estimate type="integer">1</estimate>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>When shopper is browsing products, show average product rating and number of reviews next to each product</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:14:00 UTC</updated_at>
+    <labels>user generated content</labels>
+  </story>
+  <story>
+    <id type="integer">30251887</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251887</url>
+    <estimate type="integer">1</estimate>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Shopper should be able to read reviews for a product</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:14:00 UTC</updated_at>
+    <labels>user generated content</labels>
+  </story>
+  <story>
+    <id type="integer">30251889</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251889</url>
+    <estimate type="integer">-1</estimate>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Admin should be able to mark a product as featured</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:14:00 UTC</updated_at>
+    <labels>admin,featured products</labels>
+  </story>
+  <story>
+    <id type="integer">30251891</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251891</url>
+    <estimate type="integer">-1</estimate>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Featured products should appear on the site landing page</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:14:00 UTC</updated_at>
+    <labels>featured products</labels>
+  </story>
+  <story>
+    <id type="integer">30251893</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251893</url>
+    <estimate type="integer">-1</estimate>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Admin should be able to create and edit blog articles</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:14:00 UTC</updated_at>
+    <labels>admin,blog</labels>
+  </story>
+  <story>
+    <id type="integer">30251895</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251895</url>
+    <estimate type="integer">-1</estimate>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Admin should be able to save blog articles in draft mode</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:14:00 UTC</updated_at>
+    <labels>admin,blog</labels>
+  </story>
+  <story>
+    <id type="integer">30251897</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251897</url>
+    <estimate type="integer">-1</estimate>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Published blog articles should appear on the site</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:14:00 UTC</updated_at>
+    <labels>blog</labels>
+  </story>
+  <story>
+    <id type="integer">30251899</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251899</url>
+    <estimate type="integer">-1</estimate>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>People should be able to subscribe to blog via RSS and Atom</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:14:00 UTC</updated_at>
+    <labels>blog</labels>
+  </story>
+  <story>
+    <id type="integer">30251901</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251901</url>
+    <estimate type="integer">-1</estimate>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Admin should be able to view monthly sales report</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:14:00 UTC</updated_at>
+    <labels>admin,reporting</labels>
+  </story>
+  <story>
+    <id type="integer">30251903</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251903</url>
+    <estimate type="integer">-1</estimate>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Admin should be able to export orders as CSV file, based on date range and order status</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:14:00 UTC</updated_at>
+    <labels>admin,reporting</labels>
+  </story>
+  <story>
+    <id type="integer">30251905</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>chore</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251905</url>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Request higher number of production slices, for scaling</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:14:00 UTC</updated_at>
+    <labels>deployment</labels>
+  </story>
+  <story>
+    <id type="integer">30251907</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>release</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251907</url>
+    <current_state>unstarted</current_state>
+    <description></description>
+    <name>Full production launch</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:14:00 UTC</updated_at>
+  </story>
+  <story>
+    <id type="integer">32427021</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/32427021</url>
+    <estimate type="integer">3</estimate>
+    <current_state>unstarted</current_state>
+    <description>This would be best done by patching cli-table to have the option</description>
+    <name>Display general story information in vertical table</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/07/09 05:17:56 UTC</created_at>
+    <updated_at type="datetime">2012/07/23 23:22:24 UTC</updated_at>
+    <labels>tracker</labels>
+  </story>
+  <story>
+    <id type="integer">30251909</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>bug</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251909</url>
+    <current_state>unscheduled</current_state>
+    <description></description>
+    <name>Product browsing pagination not working in IE6</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:14:00 UTC</updated_at>
+    <labels>ie6</labels>
+  </story>
+  <story>
+    <id type="integer">30251911</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251911</url>
+    <estimate type="integer">-1</estimate>
+    <current_state>unscheduled</current_state>
+    <description></description>
+    <name>Integrate with automated order fullfillment system</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:14:00 UTC</updated_at>
+  </story>
+  <story>
+    <id type="integer">30251913</id>
+    <project_id type="integer">560879</project_id>
+    <story_type>feature</story_type>
+    <url>http://www.pivotaltracker.com/story/show/30251913</url>
+    <estimate type="integer">-1</estimate>
+    <current_state>unscheduled</current_state>
+    <description></description>
+    <name>native iPhone app to allow product browsing and checkout</name>
+    <requested_by>Sonny Michaud</requested_by>
+    <created_at type="datetime">2012/05/14 00:00:00 UTC</created_at>
+    <updated_at type="datetime">2012/05/27 03:14:00 UTC</updated_at>
+    <labels>epic</labels>
+  </story>
+</stories>
