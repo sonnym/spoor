@@ -134,8 +134,26 @@ exports.labels_command = function(test) {
   });
 };
 
+exports.edit_command = function(test) {
+  helper.load_fixture("tracker/story.response", function(response_data) {
+    nock("https://www.pivotaltracker.com")
+        .put( "/services/v3/projects/1/stories/1"
+            , "<story><estimate>3</estimate><label>abc,123</label><type>bug</type></story>")
+        .reply(200, response_data);
+
+    new tracker({ "token": "n/a", "project_id": 1 }).commands.edit({ story_id: 1, estimate: 3, label: "abc,123", type: "bug" });
+
+    var mock = sinon.mock(console).expects("log").exactly(1);
+    helper.wait_for(function() { return mock.callCount === 1 }, function() {
+      console.log.restore();
+      test.equal(mock.args[0], "Story has been updated");
+      test.done();
+    });
+  });
+};
+
 exports.rm_command = function(test) {
-  helper.load_fixture("tracker/rm.response", function(response_data) {
+  helper.load_fixture("tracker/story.response", function(response_data) {
     nock("https://www.pivotaltracker.com")
         .delete("/services/v3/projects/1/stories/1").reply(200, response_data);
 
