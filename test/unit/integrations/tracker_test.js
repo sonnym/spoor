@@ -116,7 +116,7 @@ exports.show_command = function(test) {
 };
 
 exports.labels_command = function(test) {
-  helper.load_fixture("tracker/labels.response", function(response_data) {
+  helper.load_fixture("tracker/many_stories.response", function(response_data) {
     nock("https://www.pivotaltracker.com")
         .get("/services/v3/projects/1/stories?").reply(200, response_data);
 
