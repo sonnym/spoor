@@ -10,6 +10,24 @@ var tracker = require("./../../../lib/integrations/tracker");
 
 // TODO: add, schedule, deliver_finished
 
+exports.summary_command = function(test) {
+  helper.load_fixture("tracker/many_stories.response", function(response_data) {
+    nock("https://www.pivotaltracker.com")
+        .get("/services/v3/projects/1/stories?").reply(200, response_data);
+
+    new tracker({ "token": "n/a", "project_id": 1 }).commands.summary();
+
+    var mock = sinon.mock(console).expects("log").exactly(1);
+    helper.wait_for(function() { return mock.callCount === 1 }, function() {
+      console.log.restore();
+      helper.load_fixture("tracker/summary.output", function(output_data) {
+        test.equal(mock.args[0], output_data.toString());
+        test.done();
+      });
+    });
+  });
+};
+
 exports.todo_command = function(test) {
   helper.load_fixture("tracker/current.response", function(current_res) {
     nock("https://www.pivotaltracker.com").get("/services/v3/projects/1/iterations/current").reply(200, current_res);

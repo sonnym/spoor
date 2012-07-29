@@ -18,7 +18,7 @@
   },
 
   "dependencies": {
-    "cli-table": "git://github.com/LearnBoost/cli-table.git"
+    "cli-table": "git://github.com/sonnym/cli-table.git#cross_tables"
   , "commander": "git://github.com/visionmedia/commander.js.git"
   , "github": "git://github.com/sonnym/node-github.git"
   , "keypress": "~0.0.2"
