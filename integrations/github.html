@@ -8,7 +8,7 @@
 <span class="kd">var</span> <span class="nx">commander</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;commander&quot;</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">github</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GitHubApi</span><span class="p">({</span> <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="s2">&quot;3.0.0&quot;</span><span class="p">});</span>
 
-<span class="kd">var</span> <span class="nx">authenticated</span><span class="p">,</span> <span class="nx">user</span><span class="p">,</span> <span class="nx">repo</span><span class="p">,</span> <span class="nx">commands</span> <span class="o">=</span> <span class="p">{};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="setup-function">setup function</h3>
+<span class="kd">var</span> <span class="nx">authenticated</span><span class="p">,</span> <span class="nx">user</span><span class="p">,</span> <span class="nx">repo</span><span class="p">,</span> <span class="nx">commands</span> <span class="o">=</span> <span class="p">{};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h2 id="setup">setup</h2>
 
 <p>creates an authentication token for the user so they do not have to input
 their credentials repeatedly</p></div></div><div class="code"><div class="wrapper"><span class="nx">commands</span><span class="p">.</span><span class="nx">setup</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -23,9 +23,9 @@ their credentials repeatedly</p></div></div><div class="code"><div class="wrappe
   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="nx">create_authorization</span><span class="p">();</span>
   <span class="p">}</span>
-<span class="p">};</span>
+<span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h2 id="listing-commands">listing commands</h2></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="open-issues">open_issues</h3>
 
-<span class="nx">commands</span><span class="p">.</span><span class="nx">open_issues</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<p>display all open issues</p></div></div><div class="code"><div class="wrapper"><span class="nx">commands</span><span class="p">.</span><span class="nx">open_issues</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="nx">github</span><span class="p">.</span><span class="nx">issues</span><span class="p">.</span><span class="nx">repoIssues</span><span class="p">({</span> <span class="s2">&quot;user&quot;</span><span class="o">:</span> <span class="nx">user</span><span class="p">,</span> <span class="s2">&quot;repo&quot;</span><span class="o">:</span> <span class="nx">repo</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;open&quot;</span> <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">issues</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">};</span>
     <span class="nx">print_issues</span><span class="p">(</span><span class="nx">issues</span><span class="p">,</span> <span class="s2">&quot;No open issues&quot;</span><span class="p">);</span>

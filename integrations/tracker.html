@@ -16,14 +16,22 @@ integrate with Tracker.</p></div></div><div class="code"><div class="wrapper"><s
 <span class="kd">var</span> <span class="nx">commander</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;commander&quot;</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">STORY_TYPES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;bug&quot;</span><span class="p">,</span> <span class="s2">&quot;chore&quot;</span><span class="p">,</span> <span class="s2">&quot;feature&quot;</span><span class="p">,</span> <span class="s2">&quot;release&quot;</span><span class="p">];</span>
-<span class="kd">var</span> <span class="nx">STORY_STATES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;started&quot;</span><span class="p">,</span> <span class="s2">&quot;finished&quot;</span><span class="p">,</span> <span class="s2">&quot;delivered&quot;</span><span class="p">,</span> <span class="s2">&quot;accepted&quot;</span><span class="p">,</span> <span class="s2">&quot;unstarted&quot;</span><span class="p">]</span>
+<span class="kd">var</span> <span class="nx">STORY_STATES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;started&quot;</span><span class="p">,</span> <span class="s2">&quot;finished&quot;</span><span class="p">,</span> <span class="s2">&quot;delivered&quot;</span><span class="p">,</span> <span class="s2">&quot;accepted&quot;</span><span class="p">,</span> <span class="s2">&quot;rejected&quot;</span><span class="p">,</span> <span class="s2">&quot;unstarted&quot;</span><span class="p">,</span> <span class="s2">&quot;unscheduled&quot;</span><span class="p">]</span>
 
 <span class="kd">var</span> <span class="nx">project_id</span><span class="p">,</span> <span class="nx">commands</span> <span class="o">=</span> <span class="p">{},</span> <span class="nx">opts</span> <span class="o">=</span> <span class="p">{};</span>
-<span class="kd">var</span> <span class="nx">common_options</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;story_id&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">0</span>
-                                   <span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;ID of the Tracker story&quot;</span>
-                                   <span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
-                                   <span class="p">}</span>
-                     <span class="p">}</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h2 id="general-listing-commands">general listing commands</h2></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="todo">todo</h3>
+<span class="kd">var</span> <span class="nx">common_options</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;story_id&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;ID of the Tracker story&quot;</span><span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}</span>
+                     <span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;abbr&quot;</span><span class="o">:</span> <span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;The type of the story&quot;</span><span class="p">,</span> <span class="s2">&quot;choices&quot;</span><span class="o">:</span> <span class="nx">STORY_TYPES</span> <span class="p">}</span>
+                     <span class="p">,</span> <span class="s2">&quot;requested_by&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;abbr&quot;</span><span class="o">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;full&quot;</span><span class="o">:</span> <span class="s2">&quot;requester&quot;</span><span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;Full name of the user who requested the story&quot;</span> <span class="p">}</span>
+                     <span class="p">,</span> <span class="s2">&quot;current_state&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;abbr&quot;</span><span class="o">:</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="s2">&quot;full&quot;</span><span class="o">:</span> <span class="s2">&quot;state&quot;</span><span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;The current state of the story&quot;</span><span class="p">,</span> <span class="s2">&quot;choices&quot;</span><span class="o">:</span> <span class="nx">STORY_STATES</span> <span class="p">}</span>
+                     <span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h2 id="listing-commands">listing commands</h2></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="summary">summary</h3>
+
+<p>display information about the state of stories in a project</p></div></div><div class="code"><div class="wrapper"><span class="nx">commands</span><span class="p">.</span><span class="nx">summary</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">getStories</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">,</span> <span class="p">{}],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">stories</span> <span class="o">=</span> <span class="nx">ensure_array</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">story</span><span class="p">);</span>
+
+    <span class="nx">print_summary_table</span><span class="p">(</span><span class="nx">stories</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="todo">todo</h3>
 
 <p>displays a list of started and unstarted stories in current, plus the entire backlog</p></div></div><div class="code"><div class="wrapper"><span class="nx">commands</span><span class="p">.</span><span class="nx">todo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">getCurrentIteration</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">current_res</span><span class="p">)</span> <span class="p">{</span>
@@ -72,11 +80,12 @@ integrate with Tracker.</p></div></div><div class="code"><div class="wrapper"><s
 <span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="stories">stories</h3>
 
 <ul>
-<li>type Optional String</li>
+<li>opts Object
+<ul><li>type Optional String</li>
 <li>state Optional String</li>
 <li>label Optional String</li>
 <li>done Optional Boolean</li>
-<li>requester Optional String</li>
+<li>requester Optional String</li></ul></li>
 </ul>
 
 <p>display stories</p>
@@ -84,28 +93,12 @@ integrate with Tracker.</p></div></div><div class="code"><div class="wrapper"><s
 <p>By default, all stories will be displayed, but stories can be filtered
 based on a number of flags that can be provided.  All supplied filters
 must be met for a story to be returned.</p></div></div><div class="code"><div class="wrapper"><span class="nx">opts</span><span class="p">.</span><span class="nx">stories</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">parser</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">parser</span><span class="p">.</span><span class="nx">options</span><span class="p">({</span> <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;abbr&quot;</span><span class="o">:</span> <span class="s2">&quot;t&quot;</span>
-                            <span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;The type of the story&quot;</span>
-                            <span class="p">,</span> <span class="s2">&quot;choices&quot;</span><span class="o">:</span> <span class="nx">STORY_TYPES</span>
-                            <span class="p">}</span>
-                  <span class="p">,</span> <span class="s2">&quot;current_state&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;abbr&quot;</span><span class="o">:</span> <span class="s2">&quot;s&quot;</span>
-                                     <span class="p">,</span> <span class="s2">&quot;full&quot;</span><span class="o">:</span> <span class="s2">&quot;state&quot;</span>
-                                     <span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;The current state of the story&quot;</span>
-                                     <span class="p">,</span> <span class="s2">&quot;choices&quot;</span><span class="o">:</span> <span class="nx">STORY_STATES</span>
-                                     <span class="p">}</span>
-                  <span class="p">,</span> <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;abbr&quot;</span><span class="o">:</span> <span class="s2">&quot;l&quot;</span>
-                             <span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;A label that appears on the story&quot;</span>
-                             <span class="p">}</span>
-                  <span class="p">,</span> <span class="s2">&quot;includedone&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;abbr&quot;</span><span class="o">:</span> <span class="s2">&quot;d&quot;</span>
-                                   <span class="p">,</span> <span class="s2">&quot;full&quot;</span><span class="o">:</span> <span class="s2">&quot;done&quot;</span>
-                                   <span class="p">,</span> <span class="s2">&quot;flag&quot;</span><span class="o">:</span> <span class="kc">true</span>
-                                   <span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;Include accepted stories in the results&quot;</span>
-                                   <span class="p">}</span>
-                  <span class="p">,</span> <span class="s2">&quot;requested_by&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;abbr&quot;</span><span class="o">:</span> <span class="s2">&quot;r&quot;</span>
-                                    <span class="p">,</span> <span class="s2">&quot;full&quot;</span><span class="o">:</span> <span class="s2">&quot;requester&quot;</span>
-                                    <span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;Full name of the user who requested the story&quot;</span>
-                                    <span class="p">}</span>
-                  <span class="p">});</span>
+  <span class="nx">parser</span><span class="p">.</span><span class="nx">options</span><span class="p">({</span> <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="nx">common_options</span><span class="p">.</span><span class="nx">type</span>
+                 <span class="p">,</span> <span class="s2">&quot;current_state&quot;</span><span class="o">:</span> <span class="nx">common_options</span><span class="p">.</span><span class="nx">current_state</span>
+                 <span class="p">,</span> <span class="s2">&quot;requested_by&quot;</span><span class="o">:</span> <span class="nx">common_options</span><span class="p">.</span><span class="nx">requested_by</span>
+                 <span class="p">,</span> <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;abbr&quot;</span><span class="o">:</span> <span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;A label that appears on the story&quot;</span> <span class="p">}</span>
+                 <span class="p">,</span> <span class="s2">&quot;includedone&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;abbr&quot;</span><span class="o">:</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;full&quot;</span><span class="o">:</span> <span class="s2">&quot;done&quot;</span><span class="p">,</span> <span class="s2">&quot;flag&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;Include accepted stories in the results&quot;</span> <span class="p">}</span>
+                 <span class="p">});</span>
 <span class="p">};</span>
 <span class="nx">commands</span><span class="p">.</span><span class="nx">stories</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">filter_parts</span> <span class="o">=</span> <span class="nx">get_filter_parts_from_opts</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span>
@@ -121,7 +114,8 @@ must be met for a story to be returned.</p></div></div><div class="code"><div cl
 <span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="show">show</h3>
 
 <ul>
-<li>story_id: Integer</li>
+<li>opts Object
+<ul><li>story_id: Integer</li></ul></li>
 </ul>
 
 <p>Displays the details for a particular story</p>
@@ -146,7 +140,7 @@ from its basic details, to tasks, comments, and attachments</p></div></div><div 
                   <span class="p">},</span> <span class="p">[]).</span><span class="nx">flatten</span><span class="p">().</span><span class="nx">uniq</span><span class="p">().</span><span class="nx">sort</span><span class="p">().</span><span class="nx">value</span><span class="p">();</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Labels used in this project are: &quot;</span> <span class="o">+</span> <span class="nx">labels</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">));</span>
   <span class="p">});</span>
-<span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h2 id="general-editing-commands">general editing commands</h2></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="add">add</h3>
+<span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h2 id="editing-commands">editing commands</h2></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="add">add</h3>
 
 <p>add a new story</p>
 
@@ -163,10 +157,40 @@ been created, you can choose to schedule it immediately</p></div></div><div clas
       <span class="p">});</span>
     <span class="p">});</span>
   <span class="p">});</span>
+<span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="edit">edit</h3>
+
+<ul>
+<li>opts Object
+<ul><li>story<em>id: Integer</li>
+<li>type: String</li>
+<li>current</em>state: String</li>
+<li>requested_by: String</li>
+<li>label: String</li></ul></li>
+</ul>
+
+<p>edit an existing story</p></div></div><div class="code"><div class="wrapper"><span class="nx">opts</span><span class="p">.</span><span class="nx">edit</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">parser</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">parser</span><span class="p">.</span><span class="nx">options</span><span class="p">({</span> <span class="s2">&quot;story_id&quot;</span><span class="o">:</span> <span class="nx">common_options</span><span class="p">.</span><span class="nx">story_id</span>
+                 <span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="nx">common_options</span><span class="p">.</span><span class="nx">type</span>
+                 <span class="p">,</span> <span class="s2">&quot;current_state&quot;</span><span class="o">:</span> <span class="nx">common_options</span><span class="p">.</span><span class="nx">current_state</span>
+                 <span class="p">,</span> <span class="s2">&quot;requested_by&quot;</span><span class="o">:</span> <span class="nx">common_options</span><span class="p">.</span><span class="nx">requested_by</span>
+                 <span class="p">,</span> <span class="s2">&quot;estimate&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;abbr&quot;</span><span class="o">:</span> <span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;# of story points&quot;</span> <span class="p">}</span>
+                 <span class="p">,</span> <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;abbr&quot;</span><span class="o">:</span> <span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;Comma separated list of labels&quot;</span> <span class="p">}</span>
+                 <span class="p">});</span>
+<span class="p">};</span>
+<span class="nx">commands</span><span class="p">.</span><span class="nx">edit</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">attr</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="nx">_</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">opts</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">_</span><span class="p">.</span><span class="nx">include</span><span class="p">([</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot;story_id&quot;</span><span class="p">],</span> <span class="nx">key</span><span class="p">))</span> <span class="p">{</span> <span class="nx">attr</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span> <span class="p">};</span>
+  <span class="p">});</span>
+
+  <span class="nx">update_story</span><span class="p">(</span><span class="nx">opts</span><span class="p">.</span><span class="nx">story_id</span><span class="p">,</span> <span class="nx">attr</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Story has been updated&quot;</span><span class="p">);</span>
+  <span class="p">});</span>
 <span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="rm">rm</h3>
 
 <ul>
-<li>story_id: Integer</li>
+<li>opts Object
+<ul><li>story_id: Integer</li></ul></li>
 </ul>
 
 <p>remove a story</p></div></div><div class="code"><div class="wrapper"><span class="nx">opts</span><span class="p">.</span><span class="nx">rm</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">parser</span><span class="p">)</span> <span class="p">{</span>
@@ -179,35 +203,31 @@ been created, you can choose to schedule it immediately</p></div></div><div clas
 <span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="estimate">estimate</h3>
 
 <ul>
-<li>story_id: Integer</li>
-<li>estimate: Integer</li>
+<li>opts Object
+<ul><li>story_id: Integer</li>
+<li>estimate: Integer</li></ul></li>
 </ul>
 
 <p>quickly estimate a story</p></div></div><div class="code"><div class="wrapper"><span class="nx">opts</span><span class="p">.</span><span class="nx">estimate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">parser</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">parser</span><span class="p">.</span><span class="nx">options</span><span class="p">({</span> <span class="s2">&quot;story_id&quot;</span><span class="o">:</span> <span class="nx">common_options</span><span class="p">.</span><span class="nx">story_id</span>
-                 <span class="p">,</span> <span class="s2">&quot;estimate&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">1</span>
-                               <span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;# of story points&quot;</span>
-                               <span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
-                               <span class="p">}</span>
+                 <span class="p">,</span> <span class="s2">&quot;estimate&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;# of story points&quot;</span><span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}</span>
                  <span class="p">});</span>
 <span class="p">};</span>
 <span class="nx">commands</span><span class="p">.</span><span class="nx">estimate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">update_story</span><span class="p">(</span><span class="nx">opts</span><span class="p">.</span><span class="nx">story_id</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;estimate&quot;</span><span class="o">:</span> <span class="nx">opts</span><span class="p">.</span><span class="nx">estimate</span> <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">update_story</span><span class="p">(</span><span class="nx">opts</span><span class="p">.</span><span class="nx">story_id</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;estimate&quot;</span><span class="o">:</span> <span class="nx">opts</span><span class="p">.</span><span class="nx">estimate</span> <span class="p">},</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Story has been estimated&quot;</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="comment">comment</h3>
 
 <ul>
-<li>story_id: Integer</li>
-<li>comment: String</li>
+<li>opts Object
+<ul><li>story_id: Integer</li>
+<li>comment: String</li></ul></li>
 </ul>
 
 <p>comment on a story</p></div></div><div class="code"><div class="wrapper"><span class="nx">opts</span><span class="p">.</span><span class="nx">comment</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">parser</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">parser</span><span class="p">.</span><span class="nx">options</span><span class="p">({</span> <span class="s2">&quot;story_id&quot;</span><span class="o">:</span> <span class="nx">common_options</span><span class="p">.</span><span class="nx">story_id</span>
-                 <span class="p">,</span> <span class="s2">&quot;comment&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">1</span>
-                              <span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;Comment to be posted&quot;</span>
-                              <span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
-                              <span class="p">}</span>
+                 <span class="p">,</span> <span class="s2">&quot;comment&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;Comment to be posted&quot;</span><span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}</span>
                  <span class="p">});</span>
 <span class="p">};</span>
 <span class="nx">commands</span><span class="p">.</span><span class="nx">comment</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
@@ -217,35 +237,31 @@ been created, you can choose to schedule it immediately</p></div></div><div clas
 <span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="add-task">add_task</h3>
 
 <ul>
-<li>story_id: Integer</li>
-<li>task: String</li>
+<li>opts Object
+<ul><li>story_id: Integer</li>
+<li>task: String</li></ul></li>
 </ul>
 
 <p>add a task to a story</p></div></div><div class="code"><div class="wrapper"><span class="nx">opts</span><span class="p">.</span><span class="nx">add_task</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">parser</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">parser</span><span class="p">.</span><span class="nx">options</span><span class="p">({</span> <span class="s2">&quot;story_id&quot;</span><span class="o">:</span> <span class="nx">common_options</span><span class="p">.</span><span class="nx">story_id</span>
-                 <span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">1</span>
-                                  <span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;Description of task to be added&quot;</span>
-                                  <span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
-                                  <span class="p">}</span>
+                 <span class="p">,</span> <span class="s2">&quot;task&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;Text of task to be added&quot;</span><span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}</span>
                  <span class="p">});</span>
 <span class="p">};</span>
 <span class="nx">commands</span><span class="p">.</span><span class="nx">add_task</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">addTask</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">,</span> <span class="nx">opts</span><span class="p">.</span><span class="nx">story_id</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="nx">opts</span><span class="p">.</span><span class="nx">description</span> <span class="p">}],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">addTask</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">,</span> <span class="nx">opts</span><span class="p">.</span><span class="nx">story_id</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="nx">opts</span><span class="p">.</span><span class="nx">task</span> <span class="p">}],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Task has been added&quot;</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="complete-task">complete_task</h3>
 
 <ul>
-<li>story_id: Integer</li>
-<li>task_id: Integer</li>
+<li>opts Object
+<ul><li>story<em>id: Integer</li>
+<li>task</em>id: Integer</li></ul></li>
 </ul>
 
 <p>complete the specified task</p></div></div><div class="code"><div class="wrapper"><span class="nx">opts</span><span class="p">.</span><span class="nx">complete_task</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">parser</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">parser</span><span class="p">.</span><span class="nx">options</span><span class="p">({</span> <span class="s2">&quot;story_id&quot;</span><span class="o">:</span> <span class="nx">common_options</span><span class="p">.</span><span class="nx">story_id</span>
-                 <span class="p">,</span> <span class="s2">&quot;task_id&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">1</span>
-                              <span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;ID of the task to complete&quot;</span>
-                              <span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
-                              <span class="p">}</span>
+                 <span class="p">,</span> <span class="s2">&quot;task_id&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;ID of the task to complete&quot;</span><span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}</span>
                  <span class="p">});</span>
 <span class="p">};</span>
 <span class="nx">commands</span><span class="p">.</span><span class="nx">complete_task</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
@@ -255,20 +271,16 @@ been created, you can choose to schedule it immediately</p></div></div><div clas
 <span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="attach">attach</h3>
 
 <ul>
-<li>story_id: Integer</li>
+<li>opts Object
+<ul><li>story_id: Integer</li>
 <li>filepath: String</li>
-<li>name: Optional String</li>
+<li>name: Optional String</li></ul></li>
 </ul>
 
 <p>attach a file directly from your file system to a Tracker story</p></div></div><div class="code"><div class="wrapper"><span class="nx">opts</span><span class="p">.</span><span class="nx">attach</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">parser</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">parser</span><span class="p">.</span><span class="nx">options</span><span class="p">({</span> <span class="s2">&quot;story_id&quot;</span><span class="o">:</span> <span class="nx">common_options</span><span class="p">.</span><span class="nx">story_id</span>
-                 <span class="p">,</span> <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">1</span>
-                           <span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;Location of the file to upload&quot;</span>
-                           <span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
-                           <span class="p">}</span>
-                 <span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;Name of the file after upload&quot;</span>
-                           <span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">false</span>
-                           <span class="p">}</span>
+                 <span class="p">,</span> <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;Location of the file to upload&quot;</span><span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}</span>
+                 <span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;help&quot;</span><span class="o">:</span> <span class="s2">&quot;Name of the file after upload&quot;</span><span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">false</span> <span class="p">}</span>
                  <span class="p">});</span>
 <span class="p">};</span>
 <span class="nx">commands</span><span class="p">.</span><span class="nx">attach</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
@@ -290,7 +302,8 @@ been created, you can choose to schedule it immediately</p></div></div><div clas
 <span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="schedule">schedule</h3>
 
 <ul>
-<li>story_id: Integer</li>
+<li>opts Object
+<ul><li>story_id: Integer</li></ul></li>
 </ul>
 
 <p>move a story to the end of the backlog (regardless of current location)</p></div></div><div class="code"><div class="wrapper"><span class="nx">opts</span><span class="p">.</span><span class="nx">schedule</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">parser</span><span class="p">)</span> <span class="p">{</span>
@@ -303,7 +316,7 @@ been created, you can choose to schedule it immediately</p></div></div><div clas
 <span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="deliver-finished">deliver_finished</h3>
 
 <p>deliver all finished stories - perfect for a roll out to staging</p></div></div><div class="code"><div class="wrapper"><span class="nx">commands</span><span class="p">.</span><span class="nx">deliver_finished</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">deliverAllFinishedStories</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">error_catcher</span><span class="p">(</span><span class="nx">pivotal</span><span class="p">.</span><span class="nx">deliverAllFinishedStories</span><span class="p">,</span> <span class="p">[</span><span class="nx">project_id</span><span class="p">],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;All finished stories now marked as delivered&quot;</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h2 id="verbal-commands">verbal commands</h2>
@@ -311,7 +324,9 @@ been created, you can choose to schedule it immediately</p></div></div><div clas
 <p>Verbal commands take two forms:  updating and listing.  They are formed by
 the several possible states that a story may take without special cases.
 As such, they are all written by using metaprogramming to a add all the
-functions to the commands hash.</p></div></div><div class="code"><div class="wrapper"><span class="nx">_</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">STORY_STATES</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">participle</span><span class="p">)</span> <span class="p">{</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="listing">Listing:</h3>
+functions to the commands hash.</p></div></div><div class="code"><div class="wrapper"><span class="nx">_</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">STORY_STATES</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">participle</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cm">/* scheduling and rejection is not as straightforward */</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">participle</span> <span class="o">===</span> <span class="s2">&quot;unscheduled&quot;</span> <span class="o">||</span> <span class="nx">participle</span> <span class="o">===</span> <span class="s2">&quot;rejected&quot;</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h3 id="listing">Listing:</h3>
 
 <h6 id="started-finished-delivered-accepted-unstarted">started, finished, delivered, accepted, unstarted</h6>
 
@@ -324,7 +339,8 @@ functions to the commands hash.</p></div></div><div class="code"><div class="wra
 <h6 id="start-finish-deliver-accept-unstart">start, finish, deliver, accept, unstart</h6>
 
 <ul>
-<li>story_id: Integer</li>
+<li>opts Object
+<ul><li>story_id: Integer</li></ul></li>
 </ul>
 
 <p>Set a specified story to selected state.</p></div></div><div class="code"><div class="wrapper">  <span class="kd">var</span> <span class="nx">verb</span> <span class="o">=</span> <span class="nx">participle</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">);</span>
@@ -351,6 +367,58 @@ functions to the commands hash.</p></div></div><div class="code"><div class="wra
   <span class="p">}</span>
 
   <span class="k">return</span> <span class="p">{</span> <span class="s2">&quot;commands&quot;</span><span class="o">:</span> <span class="nx">commands</span><span class="p">,</span> <span class="s2">&quot;opts&quot;</span><span class="o">:</span> <span class="nx">opts</span> <span class="p">};</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">print_summary_table</span><span class="p">(</span><span class="nx">stories</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">story_count</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">size</span><span class="p">(</span><span class="nx">stories</span><span class="p">);</span>
+
+  <span class="cm">/* count stories by type and state */</span>
+  <span class="kd">var</span> <span class="nx">story_buckets</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="nx">STORY_TYPES</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">memo</span><span class="p">,</span> <span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">memo</span><span class="p">[</span><span class="nx">type</span><span class="p">]</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="nx">STORY_STATES</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">inner_memo</span><span class="p">,</span> <span class="nx">state</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">inner_memo</span><span class="p">[</span><span class="nx">state</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="k">return</span> <span class="nx">inner_memo</span><span class="p">;</span>
+    <span class="p">},</span> <span class="p">{});</span>
+    <span class="k">return</span> <span class="nx">memo</span><span class="p">;</span>
+  <span class="p">},</span> <span class="p">{});</span>
+
+  <span class="nx">_</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">stories</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">story</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">story_buckets</span><span class="p">[</span><span class="nx">story</span><span class="p">.</span><span class="nx">story_type</span><span class="p">][</span><span class="nx">story</span><span class="p">.</span><span class="nx">current_state</span><span class="p">]</span><span class="o">++</span>
+  <span class="p">});</span>
+
+  <span class="cm">/* prepare headers */</span>
+  <span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">clone</span><span class="p">(</span><span class="nx">STORY_STATES</span><span class="p">);</span>
+  <span class="nx">headers</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+  <span class="nx">headers</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">&quot;total&quot;</span><span class="p">);</span>
+
+  <span class="cm">/* generate table rows */</span>
+  <span class="kd">var</span> <span class="nx">story_table</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Table</span><span class="p">({</span> <span class="s2">&quot;head&quot;</span><span class="o">:</span> <span class="nx">headers</span> <span class="p">});</span>
+  <span class="nx">_</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">story_buckets</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">type_row</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">kvp</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="kd">var</span> <span class="nx">values</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">type_row</span><span class="p">);</span>
+
+    <span class="cm">/* add total to row */</span>
+    <span class="nx">values</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="nx">values</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">memo</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">memo</span> <span class="o">+=</span> <span class="nx">v</span> <span class="p">}));</span>
+
+    <span class="cm">/* add percentages to cells */</span>
+    <span class="nx">values</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">values</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">v</span> <span class="o">+</span> <span class="s2">&quot; (&quot;</span> <span class="o">+</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">v</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="nx">story_count</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; %)&quot;</span> <span class="p">});</span>
+
+    <span class="nx">kvp</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">values</span><span class="p">;</span>
+    <span class="nx">story_table</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">kvp</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="cm">/* add totals row */</span>
+  <span class="kd">var</span> <span class="nx">total_values</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">STORY_STATES</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">sum</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">chain</span><span class="p">(</span><span class="nx">story_buckets</span><span class="p">)</span>
+               <span class="p">.</span><span class="nx">pluck</span><span class="p">(</span><span class="nx">state</span><span class="p">)</span>
+               <span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">memo</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">memo</span> <span class="o">+=</span> <span class="nx">v</span> <span class="p">})</span>
+               <span class="p">.</span><span class="nx">value</span><span class="p">();</span>
+
+    <span class="k">return</span> <span class="nx">sum</span> <span class="o">+</span> <span class="s2">&quot; (&quot;</span> <span class="o">+</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">sum</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="nx">story_count</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; %)&quot;</span><span class="p">;</span>
+  <span class="p">});</span>
+  <span class="nx">total_values</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">story_count</span> <span class="o">+</span> <span class="s2">&quot; (100 %)&quot;</span><span class="p">)</span>
+  <span class="nx">story_table</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span> <span class="s2">&quot;totals&quot;</span><span class="o">:</span> <span class="nx">total_values</span> <span class="p">});</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">story_table</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
 <span class="p">};</span>
 
 <span class="kd">function</span> <span class="nx">print_stories</span><span class="p">(</span><span class="nx">stories</span><span class="p">,</span> <span class="nx">no_stories_message</span><span class="p">)</span> <span class="p">{</span>

@@ -243,9 +243,68 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                 {
                   "type": "heading",
                   "data": {
+                    "level": 2,
+                    "title": "setup",
+                    "slug": "setup"
+                  },
+                  "depth": 2
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "listing commands",
+                    "slug": "listing-commands"
+                  },
+                  "depth": 2,
+                  "children": [
+                    {
+                      "type": "heading",
+                      "data": {
+                        "level": 3,
+                        "title": "open_issues",
+                        "slug": "open-issues"
+                      },
+                      "depth": 3
+                    }, {
+                      "type": "heading",
+                      "data": {
+                        "level": 3,
+                        "title": "constructor",
+                        "slug": "constructor"
+                      },
+                      "depth": 3
+                    }
+                  ]
+                }
+              ]
+            },
+            "title": "Github Integration"
+          },
+          "depth": 2,
+          "outline": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "setup",
+                "slug": "setup"
+              },
+              "depth": 2
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "listing commands",
+                "slug": "listing-commands"
+              },
+              "depth": 2,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
                     "level": 3,
-                    "title": "setup function",
-                    "slug": "setup-function"
+                    "title": "open_issues",
+                    "slug": "open-issues"
                   },
                   "depth": 3
                 }, {
@@ -258,27 +317,6 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "depth": 3
                 }
               ]
-            },
-            "title": "Github Integration"
-          },
-          "depth": 2,
-          "outline": [
-            {
-              "type": "heading",
-              "data": {
-                "level": 3,
-                "title": "setup function",
-                "slug": "setup-function"
-              },
-              "depth": 3
-            }, {
-              "type": "heading",
-              "data": {
-                "level": 3,
-                "title": "constructor",
-                "slug": "constructor"
-              },
-              "depth": 3
             }
           ]
         }, {
@@ -307,12 +345,20 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "type": "heading",
                   "data": {
                     "level": 2,
-                    "title": "general listing commands",
-                    "slug": "general-listing-commands"
+                    "title": "listing commands",
+                    "slug": "listing-commands"
                   },
                   "depth": 2,
                   "children": [
                     {
+                      "type": "heading",
+                      "data": {
+                        "level": 3,
+                        "title": "summary",
+                        "slug": "summary"
+                      },
+                      "depth": 3
+                    }, {
                       "type": "heading",
                       "data": {
                         "level": 3,
@@ -390,8 +436,8 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "type": "heading",
                   "data": {
                     "level": 2,
-                    "title": "general editing commands",
-                    "slug": "general-editing-commands"
+                    "title": "editing commands",
+                    "slug": "editing-commands"
                   },
                   "depth": 2,
                   "children": [
@@ -401,6 +447,14 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                         "level": 3,
                         "title": "add",
                         "slug": "add"
+                      },
+                      "depth": 3
+                    }, {
+                      "type": "heading",
+                      "data": {
+                        "level": 3,
+                        "title": "edit",
+                        "slug": "edit"
                       },
                       "depth": 3
                     }, {
@@ -537,12 +591,20 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "type": "heading",
               "data": {
                 "level": 2,
-                "title": "general listing commands",
-                "slug": "general-listing-commands"
+                "title": "listing commands",
+                "slug": "listing-commands"
               },
               "depth": 2,
               "children": [
                 {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "summary",
+                    "slug": "summary"
+                  },
+                  "depth": 3
+                }, {
                   "type": "heading",
                   "data": {
                     "level": 3,
@@ -620,8 +682,8 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "type": "heading",
               "data": {
                 "level": 2,
-                "title": "general editing commands",
-                "slug": "general-editing-commands"
+                "title": "editing commands",
+                "slug": "editing-commands"
               },
               "depth": 2,
               "children": [
@@ -631,6 +693,14 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     "level": 3,
                     "title": "add",
                     "slug": "add"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "edit",
+                    "slug": "edit"
                   },
                   "depth": 3
                 }, {
