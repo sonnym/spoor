@@ -8,7 +8,7 @@ var helper = require("./../../test_helper");
 var utilities = require("./../../../lib/utilities");
 var tracker = require("./../../../lib/integrations/tracker");
 
-// TODO: add, schedule, deliver_finished
+// TODO: schedule, deliver_finished
 
 exports.summary_command = function(test) {
   helper.load_fixture("tracker/many_stories.response", function(response_data) {
@@ -147,6 +147,33 @@ exports.labels_command = function(test) {
                                 "deployment, design, epic, featured products, ie6, needs discussion,",
                                 "orders, reporting, search, shopper accounts, shopping, signup / signin,",
                                 "tracker, usability, user generated content"].join(" "));
+      test.done();
+    });
+  });
+};
+
+exports.add_command = function(test) {
+  helper.load_fixture("tracker/story.response", function(response_data) {
+    nock("https://www.pivotaltracker.com")
+        .post( "/services/v3/projects/1/stories"
+             , "<story><name>foo</name><story_type>feature</story_type><description>bar</description><estimate>3</estimate><labels>abc,123</labels></story>")
+        .reply(200, response_data);
+
+    new tracker({ "token": "n/a", "project_id": 1 }).commands.add({ name: "foo"
+                                                                  , story_type: "feature"
+                                                                  , description: "bar"
+                                                                  , estimate: 3
+                                                                  , labels: "abc,123"
+                                                                  });
+
+    var mock = sinon.mock(console).expects("log").exactly(2);
+    var utilities_mock = sinon.mock(utilities).expects("confirm").exactly(1);
+    helper.wait_for(function() { return mock.callCount === 2 }, function() {
+      console.log.restore();
+      utilities.confirm.restore();
+
+      test.equal(mock.args[0], "\nAdded story with id: 1");
+      test.equal(mock.args[1], "You can view it at: http://www.pivotaltracker.com/story/show/1\n");
       test.done();
     });
   });
