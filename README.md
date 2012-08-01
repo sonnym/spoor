@@ -24,6 +24,19 @@ specify the integration on the command line, e.g. `spoor foo`.
 Many commands do not require any options, but commands that have options available can be queried by calling
 the command without any arguments, such as with `spoor foo bar`.
 
+### Integration Setup
+With any particular integration you wish to use, the first step will be to run the `setup` command, which,
+in general, performs two actions.  First, you will be asked to provide your username and password for the
+service with which the integration communicates.  Once an authentication token is retreived, you will be able
+to interact with the integration without having to constantly enter your credentials.  Second, you will be
+asked for information pertaining to the project itself.  This will enable spoor to keep itself synced with
+your projects and the services you use to maintain them.
+
+The two different types of information spoor tracks are considered global and local, user and project specific,
+respectively, and both are stored in separate locations in order to decouple the data.  The former is stored in
+the user's home directory, while the latter is stored in the project root directory, whence spoor is generally
+expected to be run.
+
 ## Contributing
 Please send along any requests for additional integrations or feel free to write your own! If you decide
 to add any features to spoor, be sure to write some tests.  We use [groc](https://github.com/nevir/groc)
