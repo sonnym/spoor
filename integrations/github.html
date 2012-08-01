@@ -56,18 +56,7 @@ with github.</p></div></div><div class="code"><div class="wrapper"><span class="
               <span class="p">,</span> <span class="s2">&quot;We will save this token in your home directory so you will not need to enter credentials again.&quot;</span>
               <span class="p">].</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;\n&quot;</span><span class="p">));</span>
 
-  <span class="kd">var</span> <span class="nx">schema</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">properties</span><span class="o">:</span>
-                  <span class="p">{</span> <span class="nx">username</span><span class="o">:</span> <span class="p">{</span> <span class="nx">message</span><span class="o">:</span> <span class="s2">&quot;Username&quot;</span>
-                              <span class="p">,</span> <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span>
-                              <span class="p">}</span>
-                  <span class="p">,</span> <span class="nx">password</span><span class="o">:</span> <span class="p">{</span> <span class="nx">message</span><span class="o">:</span> <span class="s2">&quot;Password&quot;</span>
-                              <span class="p">,</span> <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span>
-                              <span class="p">,</span> <span class="nx">hidden</span><span class="o">:</span> <span class="kc">true</span>
-                              <span class="p">}</span>
-                  <span class="p">}</span>
-               <span class="p">};</span>
-
-  <span class="nx">prompt</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">schema</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">utilities</span><span class="p">.</span><span class="nx">username_and_password_prompt</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;scopes&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;repo&quot;</span><span class="p">]</span> <span class="p">,</span> <span class="s2">&quot;note&quot;</span><span class="o">:</span> <span class="s2">&quot;spoor&quot;</span> <span class="p">,</span> <span class="s2">&quot;note_url&quot;</span><span class="o">:</span> <span class="s2">&quot;https://github.com/sonnym/spoor&quot;</span> <span class="p">};</span>
 
     <span class="nx">github</span><span class="p">.</span><span class="nx">authenticate</span><span class="p">({</span> <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;basic&quot;</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="o">:</span> <span class="nx">result</span><span class="p">.</span><span class="nx">username</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="o">:</span> <span class="nx">result</span><span class="p">.</span><span class="nx">password</span> <span class="p">});</span>

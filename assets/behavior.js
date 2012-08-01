@@ -345,6 +345,14 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "type": "heading",
                   "data": {
                     "level": 2,
+                    "title": "setup",
+                    "slug": "setup"
+                  },
+                  "depth": 2
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
                     "title": "listing commands",
                     "slug": "listing-commands"
                   },
@@ -588,6 +596,14 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           "depth": 2,
           "outline": [
             {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "setup",
+                "slug": "setup"
+              },
+              "depth": 2
+            }, {
               "type": "heading",
               "data": {
                 "level": 2,
