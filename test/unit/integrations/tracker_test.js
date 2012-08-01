@@ -8,7 +8,7 @@ var helper = require("./../../test_helper");
 var utilities = require("./../../../lib/utilities");
 var tracker = require("./../../../lib/integrations/tracker");
 
-// TODO: schedule, deliver_finished
+// TODO: setup, schedule, deliver_finished
 
 exports.summary_command = function(test) {
   helper.load_fixture("tracker/many_stories.response", function(response_data) {
