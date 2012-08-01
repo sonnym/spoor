@@ -43,7 +43,7 @@ their Tracker credentials</p></div></div><div class="code"><div class="wrapper">
         <span class="k">if</span> <span class="p">(</span><span class="nx">user_data</span><span class="p">)</span> <span class="p">{</span>
           <span class="nx">user_data</span><span class="p">.</span><span class="nx">tracker</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;token&quot;</span><span class="o">:</span> <span class="nx">res</span><span class="p">.</span><span class="nx">guid</span> <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-          <span class="nx">user_data</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;github&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;token&quot;</span><span class="o">:</span> <span class="nx">res</span><span class="p">.</span><span class="nx">guid</span><span class="p">}</span> <span class="p">}</span>
+          <span class="nx">user_data</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;tracker&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;token&quot;</span><span class="o">:</span> <span class="nx">res</span><span class="p">.</span><span class="nx">guid</span><span class="p">}</span> <span class="p">}</span>
         <span class="p">}</span>
 
         <span class="nx">utilities</span><span class="p">.</span><span class="nx">write_user_data</span><span class="p">(</span><span class="nx">user_data</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
