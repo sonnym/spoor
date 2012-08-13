@@ -139,24 +139,8 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "type": "heading",
               "data": {
                 "level": 3,
-                "title": "load_integrations",
-                "slug": "load-integrations"
-              },
-              "depth": 3
-            }, {
-              "type": "heading",
-              "data": {
-                "level": 3,
-                "title": "run_command",
-                "slug": "run-command"
-              },
-              "depth": 3
-            }, {
-              "type": "heading",
-              "data": {
-                "level": 3,
-                "title": "is_integration_valid",
-                "slug": "is-integration-valid"
+                "title": "with_integrations",
+                "slug": "with-integrations"
               },
               "depth": 3
             }, {
@@ -194,24 +178,8 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           "type": "heading",
           "data": {
             "level": 3,
-            "title": "load_integrations",
-            "slug": "load-integrations"
-          },
-          "depth": 3
-        }, {
-          "type": "heading",
-          "data": {
-            "level": 3,
-            "title": "run_command",
-            "slug": "run-command"
-          },
-          "depth": 3
-        }, {
-          "type": "heading",
-          "data": {
-            "level": 3,
-            "title": "is_integration_valid",
-            "slug": "is-integration-valid"
+            "title": "with_integrations",
+            "slug": "with-integrations"
           },
           "depth": 3
         }, {

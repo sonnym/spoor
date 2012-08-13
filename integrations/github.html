@@ -63,23 +63,13 @@ with github.</p></div></div><div class="code"><div class="wrapper"><span class="
 
     <span class="nx">github</span><span class="p">.</span><span class="nx">authenticate</span><span class="p">({</span> <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;basic&quot;</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="o">:</span> <span class="nx">result</span><span class="p">.</span><span class="nx">username</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="o">:</span> <span class="nx">result</span><span class="p">.</span><span class="nx">password</span> <span class="p">});</span>
     <span class="nx">github</span><span class="p">.</span><span class="nx">oauth</span><span class="p">.</span><span class="nx">createAuthorization</span><span class="p">(</span><span class="nx">params</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">utilities</span><span class="p">.</span><span class="nx">read_user_data</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">user_data_raw</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">user_data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">user_data_raw</span><span class="p">);</span>
-
-        <span class="k">if</span> <span class="p">(</span><span class="nx">user_data</span><span class="p">)</span> <span class="p">{</span>
-          <span class="nx">user_data</span><span class="p">.</span><span class="nx">github</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;token&quot;</span><span class="o">:</span> <span class="nx">res</span><span class="p">.</span><span class="nx">token</span> <span class="p">}</span>
+      <span class="nx">utilities</span><span class="p">.</span><span class="nx">write_user_data</span><span class="p">(</span><span class="s2">&quot;github&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;token&quot;</span><span class="o">:</span> <span class="nx">res</span><span class="p">.</span><span class="nx">token</span> <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Something went wrong.&quot;</span><span class="p">);</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-          <span class="nx">user_data</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;github&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;token&quot;</span><span class="o">:</span> <span class="nx">res</span><span class="p">.</span><span class="nx">token</span> <span class="p">}</span> <span class="p">}</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Token successfully saved&quot;</span><span class="p">);</span>
         <span class="p">}</span>
-
-        <span class="nx">utilities</span><span class="p">.</span><span class="nx">write_user_data</span><span class="p">(</span><span class="nx">user_data</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-          <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Something went wrong.&quot;</span><span class="p">);</span>
-            <span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
-          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Authorization successfully created&quot;</span><span class="p">);</span>
-          <span class="p">}</span>
-        <span class="p">});</span>
       <span class="p">});</span>
     <span class="p">});</span>
   <span class="p">});</span>
