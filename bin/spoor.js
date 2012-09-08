@@ -5,4 +5,4 @@ process.on("uncaughtException", function (err) {
   process.exit();
 });
 
-require("./../lib/cli")();
+require("./../lib/cli").run();
