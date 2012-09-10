@@ -56,7 +56,7 @@ exports.current_command = function(test) {
     helper.wait_for(function() { return mock.callCount === 1 }, function() {
       console.log.restore();
       mock.verify();
-      test.equal(mock.args[0], output_data.toString());
+      test.equal(mock.args[0], output_data);
       test.done();
     });
   });
@@ -68,7 +68,7 @@ exports.backlog_command = function(test) {
     helper.wait_for(function() { return mock.callCount === 1 }, function() {
       console.log.restore();
       mock.verify();
-      test.equal(mock.args[0], output_data.toString());
+      test.equal(mock.args[0], output_data);
       test.done();
     });
   });
@@ -80,7 +80,7 @@ exports.scheduled_command = function(test) {
     helper.wait_for(function() { return mock.callCount === 1 }, function() {
       console.log.restore();
       mock.verify();
-      test.equal(mock.args[0], output_data.toString());
+      test.equal(mock.args[0], output_data);
       test.done();
     });
   });
@@ -92,7 +92,7 @@ exports.icebox_command = function(test) {
     helper.wait_for(function() { return mock.callCount === 1 }, function() {
       console.log.restore();
       mock.verify();
-      test.equal(mock.args[0], output_data.toString());
+      test.equal(mock.args[0], output_data);
       test.done();
     });
   });
@@ -104,7 +104,7 @@ exports.unestimated_command = function(test) {
     helper.wait_for(function() { return mock.callCount === 1 }, function() {
       console.log.restore();
       mock.verify();
-      test.equal(mock.args[0], output_data.toString());
+      test.equal(mock.args[0], output_data);
       test.done();
     });
   });
@@ -116,7 +116,7 @@ exports.stories_command = function(test) {
     helper.wait_for(function() { return mock.callCount === 1 }, function() {
       console.log.restore();
       mock.verify();
-      test.equal(mock.args[0], output_data.toString());
+      test.equal(mock.args[0], output_data);
       test.done();
     });
   });
@@ -322,7 +322,7 @@ _.each(["start", "finish", "deliver", "accept", "unstart"], function(verb) {
       helper.wait_for(function() { return mock.callCount === 1 }, function(){
         console.log.restore();
         mock.verify();
-        test.equal(mock.args[0][0], output_data.toString());
+        test.equal(mock.args[0][0], output_data);
         test.done();
       });
     });
@@ -340,7 +340,7 @@ function get_command_in_context(command, path, cmd_args, cb) {
 
     helper.load_fixture("tracker/" + command + ".output", function(output_data) {
       new tracker({ "token": "n/a", "project_id": 1 }).commands[command].call(null, cmd_args);
-      cb(output_data);
+      cb(output_data.toString());
     });
   });
 };

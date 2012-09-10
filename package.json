@@ -18,8 +18,8 @@
   },
 
   "dependencies": {
-    "cli-table": "git://github.com/sonnym/cli-table.git#cross_tables"
-  , "github": "git://github.com/sonnym/node-github.git"
+    "cli-table": "git://github.com/LearnBoost/cli-table.git"
+  , "github": "git://github.com/ajaxorg/node-github.git"
   , "nomnom": "~1.5"
   , "pivotal": "git://github.com/Wizcorp/node-pivotal"
   , "prompt": "~0.2"
@@ -27,8 +27,8 @@
   },
 
   "devDependencies": {
-    "groc": "git://github.com/sonnym/groc.git#fix_github_url"
-  , "nock": "git://github.com/flatiron/nock.git"
+    "groc": "~0.2.16"
+  , "nock": "0.13.4"
   , "sinon": "~1.3"
   , "nodeunit": "~0.7"
   },
