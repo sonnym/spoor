@@ -18,7 +18,7 @@
   },
 
   "dependencies": {
-    "cli-table": "git://github.com/LearnBoost/cli-table.git"
+    "cli-table": "~0.2"
   , "github": "git://github.com/ajaxorg/node-github.git"
   , "nomnom": "~1.5"
   , "pivotal": "git://github.com/Wizcorp/node-pivotal"
