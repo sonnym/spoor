@@ -17,7 +17,7 @@ self.wait_for = function(condition, cb) {
     if (condition()) {
       cb();
     } else {
-      process.nextTick(wait);
+      setImmediate(wait);
     }
   })();
 };

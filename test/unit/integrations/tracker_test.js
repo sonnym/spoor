@@ -30,10 +30,10 @@ exports.status_command = function(test) {
 
 exports.todo_command = function(test) {
   helper.load_fixture("tracker/current.response", function(current_res) {
-    nock("https://www.pivotaltracker.com").get("/services/v3/projects/1/iterations/current").reply(200, current_res);
+    nock("https://www.pivotaltracker.com").get("/services/v3/projects/1/iterations/current?").reply(200, current_res);
 
     helper.load_fixture("tracker/backlog.response", function(backlog_res) {
-      nock("https://www.pivotaltracker.com").get("/services/v3/projects/1/iterations/backlog").reply(200, backlog_res);
+      nock("https://www.pivotaltracker.com").get("/services/v3/projects/1/iterations/backlog?").reply(200, backlog_res);
 
       helper.load_fixture("tracker/todo.output", function(output_data) {
         new tracker({ "token": "n/a", "project_id": 1 }).commands.todo();
@@ -51,7 +51,7 @@ exports.todo_command = function(test) {
 };
 
 exports.current_command = function(test) {
-  get_command_in_context("current", "/services/v3/projects/1/iterations/current", function(output_data) {
+  get_command_in_context("current", "/services/v3/projects/1/iterations/current?", function(output_data) {
     var mock = sinon.mock(console).expects("log").once();
     helper.wait_for(function() { return mock.callCount === 1 }, function() {
       console.log.restore();
@@ -63,7 +63,7 @@ exports.current_command = function(test) {
 };
 
 exports.backlog_command = function(test) {
-  get_command_in_context("backlog", "/services/v3/projects/1/iterations/backlog", function(output_data) {
+  get_command_in_context("backlog", "/services/v3/projects/1/iterations/backlog?", function(output_data) {
     var mock = sinon.mock(console).expects("log").once();
     helper.wait_for(function() { return mock.callCount === 1 }, function() {
       console.log.restore();
@@ -75,7 +75,7 @@ exports.backlog_command = function(test) {
 };
 
 exports.scheduled_command = function(test) {
-  get_command_in_context("scheduled", "/services/v3/projects/1/iterations/current_backlog", function(output_data) {
+  get_command_in_context("scheduled", "/services/v3/projects/1/iterations?group=current_backlog", function(output_data) {
     var mock = sinon.mock(console).expects("log").once();
     helper.wait_for(function() { return mock.callCount === 1 }, function() {
       console.log.restore();
@@ -156,7 +156,7 @@ exports.add_command = function(test) {
   helper.load_fixture("tracker/story.response", function(response_data) {
     nock("https://www.pivotaltracker.com")
         .post( "/services/v3/projects/1/stories"
-             , "<story><name>foo</name><story_type>feature</story_type><description>bar</description><estimate>3</estimate><labels>abc,123</labels></story>")
+             , "<story ><name >foo</name><story_type >feature</story_type><description >bar</description><estimate >3</estimate><labels >abc,123</labels></story>")
         .reply(200, response_data);
 
     new tracker({ "token": "n/a", "project_id": 1 }).commands.add({ name: "foo"
@@ -165,6 +165,7 @@ exports.add_command = function(test) {
                                                                   , estimate: 3
                                                                   , labels: "abc,123"
                                                                   });
+
 
     var mock = sinon.mock(console).expects("log").exactly(2);
     var utilities_mock = sinon.mock(utilities).expects("confirm").exactly(1);
@@ -183,7 +184,7 @@ exports.edit_command = function(test) {
   helper.load_fixture("tracker/story.response", function(response_data) {
     nock("https://www.pivotaltracker.com")
         .put( "/services/v3/projects/1/stories/1"
-            , "<story><estimate>3</estimate><label>abc,123</label><type>bug</type></story>")
+            , "<story ><estimate >3</estimate><label >abc,123</label><type >bug</type></story>")
         .reply(200, response_data);
 
     new tracker({ "token": "n/a", "project_id": 1 }).commands.edit({ story_id: 1, estimate: 3, label: "abc,123", type: "bug" });
@@ -216,7 +217,7 @@ exports.rm_command = function(test) {
 exports.estimate_command = function(test) {
   helper.load_fixture("tracker/estimate.response", function(response_data) {
     nock("https://www.pivotaltracker.com")
-        .put("/services/v3/projects/1/stories/1", "<story><estimate>4321</estimate></story>")
+        .put("/services/v3/projects/1/stories/1", "<story ><estimate >4321</estimate></story>")
         .reply(200, response_data);
 
     new tracker({ "token": "n/a", "project_id": 1 }).commands.estimate({ story_id: 1, estimate: 4321 });
@@ -233,7 +234,7 @@ exports.estimate_command = function(test) {
 exports.comment_command = function(test) {
   helper.load_fixture("tracker/comment.response", function(response_data) {
     nock("https://www.pivotaltracker.com")
-        .post("/services/v3/projects/1/stories/1/notes", "<note><text>It&#39;s a trap!</text></note>")
+        .post("/services/v3/projects/1/stories/1/notes", "<note ><text >It&#39;s a trap!</text></note>")
         .reply(200, response_data);
 
     new tracker({ "token": "n/a", "project_id": 1 }).commands.comment({ story_id: 1, comment: "It's a trap!" });
@@ -249,7 +250,7 @@ exports.comment_command = function(test) {
 
 exports.add_task_command = function(test) {
   nock("https://www.pivotaltracker.com")
-      .post("/services/v3/projects/1/stories/1/tasks", "<task><description>Foo and Bar</description></task>")
+      .post("/services/v3/projects/1/stories/1/tasks", "<task ><description >Foo and Bar</description></task>")
       .reply(200);
 
   new tracker({ "token": "n/a", "project_id": 1 }).commands.add_task({ story_id: 1, task: "Foo and Bar" });
@@ -264,7 +265,7 @@ exports.add_task_command = function(test) {
 
 exports.complete_task_command = function(test) {
   nock("https://www.pivotaltracker.com")
-      .put("/services/v3/projects/1/stories/1/tasks/1", "<task><complete>true</complete></task>")
+      .put("/services/v3/projects/1/stories/1/tasks/1", "<task ><complete >true</complete></task>")
       .reply(200);
 
   new tracker({ "token": "n/a", "project_id": 1 }).commands.complete_task({ story_id: 1, task_id: 1 });
@@ -301,7 +302,7 @@ _.each(["start", "finish", "deliver", "accept", "unstart"], function(verb) {
   exports[verb + "_command"] = function(test) {
     helper.load_fixture("tracker/" + verb + ".response", function(response_data) {
       nock("https://www.pivotaltracker.com")
-          .put("/services/v3/projects/1/stories/1", "<story><current_state>" + verb + "ed</current_state></story>")
+          .put("/services/v3/projects/1/stories/1", "<story ><current_state >" + verb + "ed</current_state></story>")
           .reply(200, response_data);
 
       new tracker({ "token": "n/a", "project_id": 1 }).commands[verb]({ story_id: 1 });
